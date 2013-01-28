@@ -2,3 +2,5 @@
 
 .project
 .c9revisions/
+
+tests/qunit-*

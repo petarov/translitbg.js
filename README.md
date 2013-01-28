@@ -1,4 +1,8 @@
-translit.js
-===========
+translit-bg.js
+=================
 
-Transliteration Javascript library
+Javascript library for transliteration of Bulgarian characters.
+
+# Description
+# Usage
+

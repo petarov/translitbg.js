@@ -1,14 +1,4 @@
-lib-cov
-*.seed
-*.log
-*.csv
-*.dat
-*.out
-*.pid
-*.gz
+# Ignored
 
-pids
-logs
-results
-
-npm-debug.log
+.project
+.c9revisions/

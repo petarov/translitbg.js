@@ -24,7 +24,14 @@
  
 var TranslitBGModes = {
     
-    STREAMLINED : {     // Streamlined System
+    STREAMLINED : {     // Streamlined System - http://bit.ly/14spk2M
+        tokens : {
+            'дж' : 'dzh',
+            'дз' : 'dz',
+            'ьо' : 'yo',
+            'йо' : 'yo',
+            'ия' : 'ia'     // Буквеното съчетание „ия“, когато е в края на думата, се изписва и предава чрез „ia“.
+        },
         cyr2lat: {
             // lower case
             'а' : 'a', 
@@ -106,16 +113,27 @@ function translitBG(type) {
 translitBG.prototype.transliterate = function(text) {
     
     var result = new StringBuffer();
-    
     var array = text.split('');
+    var prev = null;
+    
     for (var i = 0; i < array.length; i++) {
-        var char = array[i];
+        var cur = array[i];
+        var next = array[i + 1];
         
-        if (this.mode.cyr2lat[char] != null) {
-            result.append(this.mode.cyr2lat[char]);
+        if (next != null && this.mode.tokens[cur + next] != null) {
+//            if (prev == null || /\s/.test(prev))  {
+//                cur = cur.toUpperCase();
+//                next = next.toLowerCase();
+//            }
+            result.append(this.mode.tokens[cur + next]);
+            i++;
+        } else if (this.mode.cyr2lat[cur] != null) {
+            result.append(this.mode.cyr2lat[cur]);
         } else {
-            result.append(char);
+            result.append(cur);
         }
+        
+        prev = cur;
     }
     
     return result.toString();

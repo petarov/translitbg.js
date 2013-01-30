@@ -33,7 +33,7 @@ QUnit.test( "STREAMLINED_02", function() {
 /* 
  * Test 03 - Имена
  */
-QUnit.test( "STREAMLINED_02", function() {
+QUnit.test( "STREAMLINED_03", function() {
   var translit = translitJS.create(TranslitMode.cyr2lat);
   
   QUnit.assert.equal( translit.transliterate('Стара планина'), 'Stara planina', 
@@ -51,9 +51,26 @@ QUnit.test( "STREAMLINED_02", function() {
   QUnit.assert.equal( translit.transliterate('Перник-север'), 'Pernik-sever', 
     "Cyr2Lat_STREAMLINED - Result/Expected" );  
     
-  QUnit.assert.equal( translit.transliterate('Златни пясъци'), 'Zlatni рyasatsi', 
+  QUnit.assert.equal( translit.transliterate('Златни пясъци'), 'Zlatni pyasatsi', 
     "Cyr2Lat_STREAMLINED - Result/Expected" );  
     
   QUnit.assert.equal( translit.transliterate('Горна Оряховица'), 'Gorna Oryahovitsa', 
     "Cyr2Lat_STREAMLINED - Result/Expected" );  
+});
+
+/* 
+ * Test 04 - Човешки Имена
+ */
+QUnit.test( "STREAMLINED_04", function() {
+  var translit = translitJS.create(TranslitMode.cyr2lat);
+  
+  QUnit.assert.equal( translit.transliterate('Самуил'), 'Samuil', 
+    "Cyr2Lat_STREAMLINED - Result/Expected" );
+    
+  QUnit.assert.equal( translit.transliterate('Синтия'), 'Sintia', 
+    "Cyr2Lat_STREAMLINED - Result/Expected" );
+    
+  QUnit.assert.equal( translit.transliterate('Марияна ИваноВа'), 'Mariyana IvanoVa', 
+    "Cyr2Lat_STREAMLINED - Result/Expected" );    
+    
 });

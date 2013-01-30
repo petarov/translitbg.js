@@ -23,63 +23,97 @@
  */
  
 var TranslitBGModes = {
+    
     STREAMLINED : {     // Streamlined System
-        cyr: ['а', 'б', 'в', 'г', 'д', 'е', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 
-        'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 
-        'ь', 'ю', 'я'],
-        
-        cyrBig: [],
-        
-        lat: ['a', 'b', 'v', 'g', 'd', 'e', 'zh', 'z', 'i', 'y', 'k', 'l', 'm', 
-        'n', 'o', 'p', 'r', 's', 't', 'u', 'f', 'h', 'ts', 'ch', 'sh', 'sht', 
-        'a', 'y', 'yu', 'ya'],
-        
-        latBig: [],
+        cyr2lat: {
+            // lower case
+            'а' : 'a', 
+            'б' : 'b', 
+            'в' : 'v',
+            'г' : 'g', 
+            'д' : 'd', 
+            'е' : 'e', 
+            'ж' : 'zh',
+            'з' : 'z', 
+            'и' : 'i', 
+            'й' : 'y', 
+            'к' : 'k', 
+            'л' : 'l', 
+            'м' : 'm', 
+            'н' : 'n', 
+            'о' : 'o', 
+            'п' : 'p', 
+            'р' : 'r', 
+            'с' : 's', 
+            'т' : 't', 
+            'у' : 'u', 
+            'ф' : 'f', 
+            'х' : 'h', 
+            'ц' : 'ts', 
+            'ч' : 'ch', 
+            'ш' : 'sh', 
+            'щ' : 'sht', 
+            'ъ' : 'a', 
+            'ь' : 'y', 
+            'ю' : 'yu', 
+            'я' : 'ya',
+            // upper case
+            'А' : 'A', 
+            'Б' : 'B', 
+            'В' : 'V',
+            'Г' : 'G', 
+            'Д' : 'D', 
+            'Е' : 'E', 
+            'Ж' : 'ZH',
+            'З' : 'Z', 
+            'И' : 'I', 
+            'Й' : 'Y', 
+            'К' : 'K', 
+            'Л' : 'L', 
+            'М' : 'M', 
+            'Н' : 'N', 
+            'О' : 'O', 
+            'П' : 'P', 
+            'Р' : 'R', 
+            'С' : 'S', 
+            'Т' : 'T', 
+            'У' : 'U', 
+            'Ф' : 'F', 
+            'Х' : 'H', 
+            'Ц' : 'TS', 
+            'Ч' : 'CH', 
+            'Ш' : 'SH', 
+            'Щ' : 'SHT', 
+            'Ъ' : 'A', 
+            'Ь' : 'Y', 
+            'Ю' : 'YU', 
+            'Я' : 'YA'
+            },
+        lat2cyr: {
+         
+            },
         },
         
-    BDS_ISO9_2001 : {},  // БДС ISO 9:2001
-    DANCHEV : {}         // система „Данчев-Холмън-Димова-Савова“
-    };
+    BDS_ISO9_2001 : {}, // БДС ISO 9:2001
+    
+    DANCHEV : {},        // система „Данчев-Холмън-Димова-Савова“
+}
 
 function translitBG(type) {
     this.mode = TranslitBGModes.STREAMLINED;
-    
-    var upperCaseCyr = new StringBuffer();
-    var upperCaseLat = new StringBuffer();
-    
-    for (var i = 0; i < this.mode.cyr.length; i++) {
-        upperCaseCyr.append(this.mode.cyr[i].toUpperCase());
-        upperCaseLat.append(this.mode.lat[i].toUpperCase());
-    }
-    
-    this.mode.cyrBig = upperCaseCyr.toArray();
-    this.mode.latBig = upperCaseLat.toArray();
 }
 
 translitBG.prototype.transliterate = function(text) {
     
     var result = new StringBuffer();
-    var found = false;
     
     var array = text.split('');
     for (var i = 0; i < array.length; i++) {
         var char = array[i];
-        found = false;
         
-        for (var k = 0; k < this.mode.cyr.length; k++) {
-            if (char == this.mode.cyr[k]) {
-               // console.log("%s is %s - %s", char, this.mode.cyr[k], this.mode.lat[k]);
-                result.append(this.mode.lat[k]);
-                found = true;
-                break;
-            } else if (char == this.mode.cyrBig[k]) {
-                result.append(this.mode.latBig[k]);
-                found = true;
-                break;
-            }
-        }
-        
-        if (!found) {
+        if (this.mode.cyr2lat[char] != null) {
+            result.append(this.mode.cyr2lat[char]);
+        } else {
             result.append(char);
         }
     }

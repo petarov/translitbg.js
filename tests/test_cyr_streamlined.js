@@ -28,3 +28,32 @@ QUnit.test( "STREAMLINED_02", function() {
   QUnit.assert.equal( result, expected, 
     "Cyr2Lat_STREAMLINED - Result/Expected" );
 });
+
+
+/* 
+ * Test 03 - Имена
+ */
+QUnit.test( "STREAMLINED_02", function() {
+  var translit = translitJS.create(TranslitMode.cyr2lat);
+  
+  QUnit.assert.equal( translit.transliterate('Стара планина'), 'Stara planina', 
+    "Cyr2Lat_STREAMLINED - Result/Expected" );
+    
+  QUnit.assert.equal( translit.transliterate('Атанасовско езеро'), 'Atanasovsko ezero', 
+    "Cyr2Lat_STREAMLINED - Result/Expected" );
+    
+  QUnit.assert.equal( translit.transliterate('Централен Балкан'), 'Tsentralen Balkan', 
+    "Cyr2Lat_STREAMLINED - Result/Expected" ); 
+    
+  QUnit.assert.equal( translit.transliterate('София-юг'), 'Sofia-yug', 
+    "Cyr2Lat_STREAMLINED - Result/Expected" );  
+    
+  QUnit.assert.equal( translit.transliterate('Перник-север'), 'Pernik-sever', 
+    "Cyr2Lat_STREAMLINED - Result/Expected" );  
+    
+  QUnit.assert.equal( translit.transliterate('Златни пясъци'), 'Zlatni рyasatsi', 
+    "Cyr2Lat_STREAMLINED - Result/Expected" );  
+    
+  QUnit.assert.equal( translit.transliterate('Горна Оряховица'), 'Gorna Oryahovitsa', 
+    "Cyr2Lat_STREAMLINED - Result/Expected" );  
+});

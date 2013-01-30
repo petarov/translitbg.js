@@ -45,3 +45,21 @@ var translitJS = {
         return new translitBG();
     }
 } 
+
+// Addresses some speed issues with IE 
+function StringBuffer() {
+    this.buffer = [];
+}
+ 
+StringBuffer.prototype.append = function append(string) {
+    this.buffer.push(string);
+    return this;
+};
+ 
+StringBuffer.prototype.toString = function toString() {
+    return this.buffer.join("");
+};
+
+StringBuffer.prototype.toArray = function() {
+    return this.buffer;
+}

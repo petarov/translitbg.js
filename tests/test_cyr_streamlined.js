@@ -7,7 +7,7 @@ QUnit.test( "STREAMLINED_01", function() {
   var translit = translitJS.create(TranslitMode.cyr2lat);
   var input = "абвгдежзийклмнопрстуфхцчшщъьюя";
   var result = translit.transliterate(input);
-  
+
   QUnit.assert.equal( result, "abvgdezhziyklmnoprstufhtschshshtayyuya", 
     "Cyr2Lat_STREAMLINED - Result/Expected" );
 });

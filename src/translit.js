@@ -22,4 +22,26 @@
  * THE SOFTWARE.
  */
  
- 
+var TranslitMode = {
+    none : 0,
+    cyr2lat : 1,
+    lat2cyr : 2,
+};
+
+var translitJS = {
+    
+    create: function (mode) {
+        switch(mode) {
+            case TranslitMode.cyr2lat:
+                break;
+            case TranslitMode.lat2cyr:
+                break;
+            case TranslitMode.none:
+            default:
+                throw "Invalid (" + mode + ") transliteration mode!";
+                break;
+        }
+        
+        return new translitBG();
+    }
+} 

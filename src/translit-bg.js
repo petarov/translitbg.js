@@ -22,4 +22,63 @@
  * THE SOFTWARE.
  */
  
+// addresses some speed issues with IE 
+function StringBuffer() {
+    this.buffer = [];
+}
  
+StringBuffer.prototype.append = function append(string) {
+    this.buffer.push(string);
+    return this;
+};
+ 
+StringBuffer.prototype.toString = function toString() {
+    return this.buffer.join("");
+}; 
+ 
+var TranslitBGModes = {
+    STREAMLINED : {     // Streamlined System
+        cyr: ['а', 'б', 'в', 'г', 'д', 'е', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 
+        'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 
+        'ь', 'ю', 'я'],
+        lat: ['a', 'b', 'v', 'g', 'd', 'e', 'zh', 'z', 'i', 'y', 'k', 'l', 'm', 
+        'n', 'o', 'p', 'r', 's', 't', 'u', 'f', 'h', 'ts', 'ch', 'sh', 'sht', 
+        'a', 'y', 'yu', 'ya']
+        },
+    BDS_ISO9_2001 : 1,  // БДС ISO 9:2001
+    DANCHEV : 2         // система „Данчев-Холмън-Димова-Савова“
+    };
+
+function translitBG(type) {
+    this.mode = TranslitBGModes.STREAMLINED;
+}
+
+translitBG.prototype.transliterate = function(text) {
+    
+    var result = new StringBuffer();
+    var found = false;
+    
+    var array = text.split('');
+    for (var i = 0; i < array.length; i++) {
+        var char = array[i];
+        found = false;
+        
+        for (var k = 0; k < this.mode.cyr.length; k++) {
+            if (char == this.mode.cyr[k]) {
+               // console.log("%s is %s - %s", char, this.mode.cyr[k], this.mode.lat[k]);
+                result.append(this.mode.lat[k]);
+                found = true;
+                break;
+            }
+        }
+        
+        if (!found) {
+            result.append(char);
+        }
+    }
+    
+    return result.toString();
+}
+
+
+

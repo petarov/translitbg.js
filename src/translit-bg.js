@@ -24,13 +24,21 @@
  
 var TranslitBGModes = {
     
-    STREAMLINED : {     // Streamlined System - http://bit.ly/14spk2M
-        tokens : {
-            'дж' : 'dzh',
-            'дз' : 'dz',
-            'ьо' : 'yo',
-            'йо' : 'yo',
-            'ия' : 'ia'     // Буквеното съчетание „ия“, когато е в края на думата, се изписва и предава чрез „ia“.
+    // Обтекаема система - http://bit.ly/14spk2M
+    // Обратимост: Възстановяването на оригиналната дума не е водещ принцип!
+    STREAMLINED : {     
+        tokens : {      
+//            'дж' : 'dzh',
+//            'дз' : 'dz',
+//            'ьо' : 'yo',
+//            'йо' : 'yo',
+            // Буквеното съчетание „ия“, когато е в края на думата, се изписва и предава чрез „ia“.
+            ia : {
+                'ия' : 'ia',     
+                'Ия' : 'Ia',
+                'иЯ' : 'iA',
+                'ИЯ' : 'IA',
+            }
         },
         cyr2lat: {
             // lower case
@@ -71,7 +79,7 @@ var TranslitBGModes = {
             'Г' : 'G', 
             'Д' : 'D', 
             'Е' : 'E', 
-            'Ж' : 'ZH',
+            'Ж' : 'Zh',
             'З' : 'Z', 
             'И' : 'I', 
             'Й' : 'Y', 
@@ -87,57 +95,80 @@ var TranslitBGModes = {
             'У' : 'U', 
             'Ф' : 'F', 
             'Х' : 'H', 
-            'Ц' : 'TS', 
-            'Ч' : 'CH', 
+            'Ц' : 'Ts',  // TODO: upper or lower case ?
+            'Ч' : 'Ch', 
             'Ш' : 'SH', 
-            'Щ' : 'SHT', 
+            'Щ' : 'Sht', 
             'Ъ' : 'A', 
             'Ь' : 'Y', 
-            'Ю' : 'YU', 
-            'Я' : 'YA'
+            'Ю' : 'Yu', 
+            'Я' : 'Ya'
             },
         lat2cyr: {
          
             },
         },
         
-    BDS_ISO9_2001 : {}, // БДС ISO 9:2001
+    // TODO: БДС ISO 9:2001 
+    BDS_ISO9_2001 : {}, 
     
-    DANCHEV : {},        // система „Данчев-Холмън-Димова-Савова“
+    // TODO: система „Данчев-Холмън-Димова-Савова“
+    DANCHEV : {},        
 }
 
-function translitBG(type) {
-    this.mode = TranslitBGModes.STREAMLINED;
+function translitBG() {
+    this.setForward(TranslitBGModes.STREAMLINED);
 }
 
+translitBG.prototype.setForward = function(type) {
+    this.mode = type;
+}
+
+translitBG.prototype.setReverse = function(type) {
+    throw "Not supported!"; 
+}
+
+/*
+ * Transliterate Cyrillic to Latin characters 
+ */
 translitBG.prototype.transliterate = function(text) {
-    
     var result = new StringBuffer();
     var array = text.split('');
-    var prev = null;
+//    var prev = null;
     
     for (var i = 0; i < array.length; i++) {
         var cur = array[i];
         var next = array[i + 1];
         
-        if (next != null && this.mode.tokens[cur + next] != null) {
-//            if (prev == null || /\s/.test(prev))  {
-//                cur = cur.toUpperCase();
-//                next = next.toLowerCase();
-//            }
-            result.append(this.mode.tokens[cur + next]);
-            i++;
-        } else if (this.mode.cyr2lat[cur] != null) {
+        if (next !== undefined) {
+            var curToken = cur + next;
+            
+            if (this.mode.tokens.ia[curToken] !== undefined) {
+                var nextNext = array[i + 2];
+                if (nextNext === undefined || /^[-\s]$/.test(nextNext)) {
+                    result.append(this.mode.tokens.ia[curToken]);
+                    i++;
+                    continue;
+                }
+            }
+        }
+        
+        if (this.mode.cyr2lat[cur] !== undefined) {
             result.append(this.mode.cyr2lat[cur]);
         } else {
             result.append(cur);
         }
         
-        prev = cur;
+//        prev = cur;
     }
     
     return result.toString();
 }
 
-
+/*
+ * Reverse-transliteration: Latin to Cyrillic characters 
+ */
+translitBG.prototype.reverse = function(text) {
+    throw "Not supported!"; 
+}
 

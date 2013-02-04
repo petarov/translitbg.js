@@ -33,16 +33,18 @@ var translitJS = {
     create: function (mode) {
         switch(mode) {
             case TranslitMode.cyr2lat:
+                return new translitBG();
                 break;
             case TranslitMode.lat2cyr:
+                return new translitBG();
                 break;
+            // invalid
             case TranslitMode.none:
             default:
-                throw "Invalid (" + mode + ") transliteration mode!";
                 break;
         }
         
-        return new translitBG();
+        throw "Invalid (" + mode + ") transliteration mode!";
     }
 } 
 

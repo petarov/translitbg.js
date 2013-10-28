@@ -1,12 +1,12 @@
 {
-    "name" : "translit-bg",
-    "description" : "Javascript lib that transliterates Bulgarian to Latin characters or vice versa. ",
-    "homepage" : "https://github.com/petarov/translit-bg.js",
-    "keywords" : ["transliteration", "cyrillic", "bulgarian", "library"],
+    "name" : "translitbg",
+    "description" : "Javascript Bulgarian to Latin characters transliteration.",
+    "homepage" : "https://github.com/petarov/translitbg.js",
+    "keywords" : ["transliteration", "cyrillic", "bulgarian", "latin"],
     "author" : "Petar Petrov",
     "contributors" : [],
     "dependencies" : [],
-    "repository" : {"type": "git", "url": "git://github.com/petarov/translit-bg.js.git"},
-    "main" : "translit-bg.js",
-    "version" : "0.0.1"
+    "repository" : {"type": "git", "url": "git://github.com/petarov/translitbg.js.git"},
+    "main" : "translitbg.js",
+    "version" : "0.9.0"
 }

@@ -1,36 +1,30 @@
 translit-bg.js
 =================
 
-Javascript lib that transliterates Bulgarian to Latin characters or vice versa. 
+Transliterates Bulgarian to Latin characters or vice versa. 
 
 Javascript транслитерация на българските букви с латински (наречена още латинска транслитерация или латинизация/романизация на българския език).
 
+# Requirements
+
+  * jQuery 1.x
+  * QUnit 1.x (only for tests)
+
 # Usage
 
-```javascript
-
-<head>
-    <script type="text/javascript" src="src/translit.js"></script>
-    <script type="text/javascript" src="src/translit-bg.js"></script>
-
-</head>
-<body>
-
+```html
+<script type="text/javascript" src="src/translit.js"></script>
 <script>
     // forward - Cyrillic to Latin transliteration
-    var translit = translitJS.create(TranslitMode.cyr2lat);
+    var trans = translit.create(translit.mode.cyr2lat);
     var input = "абвгдежзийклмнопрстуфхцчшщъьюя";
     var expected = "abvgdezhziyklmnoprstufhtschshshtayyuya";
-    var result = translit.transliterate(input);
-    
+    var result = trans.transliterate(input);
 </script>
-
 ```
-# Running Tests
+# Tests
 
-Use the *run-tests.html* to test the behavior of the script. Make sure the following files are available in the *tests* folder:
-* qunit-1.11.0.css
-* qunit-1.11.0.js
+Run `run-tests.html` to check for errors. 
 
 # References
 

@@ -15,8 +15,8 @@ Javascript транслитерация на българските букви �
 ```html
 <script type="text/javascript" src="src/translit.js"></script>
 <script>
-    // forward - Cyrillic to Latin transliteration
-    var trans = translit.create(translit.mode.cyr2lat);
+    // Cyrillic to Latin transliteration
+    var trans = translitbg.create(translitbg.mode.cyr2lat);
     var input = "абвгдежзийклмнопрстуфхцчшщъьюя";
     var expected = "abvgdezhziyklmnoprstufhtschshshtayyuya";
     var result = trans.transliterate(input);
@@ -24,7 +24,7 @@ Javascript транслитерация на българските букви �
 ```
 # Tests
 
-Run `run-tests.html` to check for errors. 
+Run `tests.html` to check for errors. 
 
 # References
 

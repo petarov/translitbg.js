@@ -1,13 +1,11 @@
 /*
- *
- * translit-bg JavaScript Transliteration Library v0.0.1
- * https://github.com/petarov/translit-bg.js
+ * translitbg.js v0.9
+ * https://github.com/petarov/translitbg.js
  *
  * Copyright 2013 Petar Petrov and other contributors
  * Released under the MIT license
- * https://github.com/petarov/translit-bg.js/blob/master/LICENSE
+ * https://github.com/petarov/translitbg.js/blob/master/LICENSE
  */
-
 ;(function($, w, undefined) {
     w.translitbg = {
         /**

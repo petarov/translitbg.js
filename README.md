@@ -13,7 +13,7 @@ Javascript транслитерация на българските букви �
 # Usage
 
 ```html
-<script type="text/javascript" src="src/translit.js"></script>
+<script type="text/javascript" src="src/translitbg.js"></script>
 <script>
     // Cyrillic to Latin transliteration
     var trans = translitbg.create(translitbg.mode.cyr2lat);

@@ -1,4 +1,4 @@
-module( "cyr2lat STREAMLINED" );
+module( "Cyr2Lat Tests" );
 
 /* 
  * Test 01 - Alphabet

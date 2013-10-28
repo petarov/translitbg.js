@@ -1,4 +1,4 @@
-translit-bg.js
+translitbg.js
 =================
 
 Transliterates Bulgarian to Latin characters. 

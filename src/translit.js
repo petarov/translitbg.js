@@ -14,7 +14,6 @@
          * Transliteration modes
          */
         mode: {
-            none : 0,
             cyr2lat : 1,
             lat2cyr : 2,
         },
@@ -22,20 +21,17 @@
          * Create new transliteration object
          * @param  {Integer} mode Mode of operation
          */
-        create: function (mode) {
+        create: function(mode) {
+            mode = mode || this.mode.cyr2lat;
             switch(mode) {
-                case this.mode.cyr2lat:
-                    return new translitBG();
-                    break;
                 case this.mode.lat2cyr:
-                    return new translitBG();
-                    break;
-                // invalid
-                case this.mode.none:
+                    throw "Unsupported mode!";
+                break;
+                case this.mode.cyr2lat:
                 default:
-                    break;
+                    return new translitBG();
+                break;
             }
-            throw "Invalid (" + mode + ") transliteration mode!";
         }
     };
 
@@ -57,7 +53,6 @@
     });
 
     var TranslitBGModes = {
-        
         // Обтекаема система - http://bit.ly/14spk2M
         // Обратимост: Възстановяването на оригиналната дума не е водещ принцип!
         STREAMLINED : {     
@@ -139,7 +134,7 @@
                 'Я' : 'Ya'
                 },
             lat2cyr: {
-             
+                // TODO:
                 },
             },
             
@@ -154,56 +149,57 @@
         this.setForward(TranslitBGModes.STREAMLINED);
     }
 
-    translitBG.prototype.setForward = function(type) {
-        this.mode = type;
-    }
+    translitBG.prototype = $.extend({}, {
 
-    translitBG.prototype.setReverse = function(type) {
-        throw "Not supported!"; 
-    }
+        setForward: function(type) {
+            this.mode = type;
+        },
 
-    /*
-     * Transliterate Cyrillic to Latin characters 
-     */
-    translitBG.prototype.transliterate = function(text) {
-        var result = new StringBuffer();
-        var array = text.split('');
-    //    var prev = null;
-        
-        for (var i = 0; i < array.length; i++) {
-            var cur = array[i];
-            var next = array[i + 1];
+        setReverse: function(type) {
+            throw "Not supported!"; 
+        },
+
+        /*
+         * Transliterate Cyrillic to Latin characters 
+         */
+        transliterate: function(text) {
+            var result = new StringBuffer();
+            var array = text.split('');
+        //    var prev = null;
             
-            if (next !== undefined) {
-                var curToken = cur + next;
+            for (var i = 0; i < array.length; i++) {
+                var cur = array[i];
+                var next = array[i + 1];
                 
-                if (this.mode.tokens.ia[curToken] !== undefined) {
-                    var nextNext = array[i + 2];
-                    if (nextNext === undefined || /^[-\s]$/.test(nextNext)) {
-                        result.append(this.mode.tokens.ia[curToken]);
-                        i++;
-                        continue;
+                if (next !== undefined) {
+                    var curToken = cur + next;
+                    
+                    if (this.mode.tokens.ia[curToken] !== undefined) {
+                        var nextNext = array[i + 2];
+                        if (nextNext === undefined || /^[-\s]$/.test(nextNext)) {
+                            result.append(this.mode.tokens.ia[curToken]);
+                            i++;
+                            continue;
+                        }
                     }
                 }
+                
+                if (this.mode.cyr2lat[cur] !== undefined) {
+                    result.append(this.mode.cyr2lat[cur]);
+                } else {
+                    result.append(cur);
+                }
+        //        prev = cur;
             }
             
-            if (this.mode.cyr2lat[cur] !== undefined) {
-                result.append(this.mode.cyr2lat[cur]);
-            } else {
-                result.append(cur);
-            }
-    //        prev = cur;
-        }
-        
-        return result.toString();
-    }
+            return result.toString();
+        },
 
-    /*
-     * Reverse-transliteration: Latin to Cyrillic characters 
-     */
-    translitBG.prototype.reverse = function(text) {
-        throw "Not supported!"; 
-    }
-
-    return w.translitbg;
+        /*
+         * Reverse-transliteration: Latin to Cyrillic characters 
+         */
+        reverse: function(text) {
+            throw "Not supported!"; 
+        }        
+    });
 }(jQuery, window));

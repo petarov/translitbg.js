@@ -1,14 +1,13 @@
 translit-bg.js
 =================
 
-Transliterates Bulgarian to Latin characters or vice versa. 
+Transliterates Bulgarian to Latin characters. 
 
 Javascript транслитерация на българските букви с латински (наречена още латинска транслитерация или латинизация/романизация на българския език).
 
 # Requirements
 
-  * jQuery 1.x
-  * QUnit 1.x (only for tests)
+  * jQuery 1.10+
 
 # Usage
 
@@ -24,7 +23,14 @@ Javascript транслитерация на българските букви �
 ```
 # Tests
 
-Run `tests.html` to check for errors. 
+To run the Qunit tests first install the required bower dependencies via:
+
+    bower install
+
+You may use Python3 to start an http web server on http://localhost:8000 and run `tests.html`:
+
+    python -m http.server
+    Serving HTTP on 0.0.0.0 port 8000 ...
 
 # References
 

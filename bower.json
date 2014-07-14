@@ -5,7 +5,7 @@
   "authors": [
     "Petar Petrov <petar.petrov.georgiev@gmail.com>"
   ],
-  "description": "Transliterates Bulgarian to Latin characters",
+  "description": "Bulgarian to Latin characters transliteration.",
   "main": "src/translitbg.js",
   "keywords": [
     "transliteration",

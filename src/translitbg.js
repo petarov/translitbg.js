@@ -1,10 +1,9 @@
 /*
- * translitbg.js v0.9
+ * translitbg.js v0.9.2
  * https://github.com/petarov/translitbg.js
  *
- * Copyright 2013 Petar Petrov and other contributors
+ * Copyright 2013 Petar Petrov
  * Released under the MIT license
- * https://github.com/petarov/translitbg.js/blob/master/LICENSE
  */
 ;(function(w) {
     w.translitbg = {

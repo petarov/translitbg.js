@@ -1,6 +1,6 @@
 {
   "name": "translitbg.js",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "homepage": "https://github.com/petarov/translitbg.js",
   "authors": [
     "Petar Petrov <petar.petrov.georgiev@gmail.com>"
@@ -15,6 +15,6 @@
   "license": "MIT",
   "devDependencies": {
     "qunit": "~1.14.0",
-    "jquery": "1.10"
+    "jquery": "1.x"
   }
 }

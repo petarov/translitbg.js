@@ -18,9 +18,9 @@
     "jquery": "1.x"
   },
   "ignore": [
-    ".gitignore",
+    "**/.*",
     "bower.json",
-    "tests/*",
+    "tests",
     "tests.html"
   ]
 }

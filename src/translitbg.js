@@ -11,8 +11,8 @@
      * Transliteration modes
      */
      mode: {
-      cyr2lat : 1,
-      lat2cyr : 2,
+      cyr2lat: 1,
+      lat2cyr: 2,
     },
     /**
      * Create new transliteration object
@@ -168,21 +168,21 @@
           var cur = array[i];
           var next = array[i + 1];
 
-          if (next !== undefined) {
+          if (typeof next !== 'undefined') {
             var curToken = cur + next;
 
-            if (this.mode.tokens.ia[curToken] !== undefined) {
+            if (this.mode.tokens.ia[curToken]) {
               var nextNext = array[i + 2];
-              if (nextNext === undefined || /^[-\s]$/.test(nextNext)) {
+              if (typeof nextNext === 'undefined' || /^[-\s]$/.test(nextNext)) {
                 result.append(this.mode.tokens.ia[curToken]);
                 i++;
                 continue;
               }
             }
-            
+
           }
 
-          if (this.mode.cyr2lat[cur] !== undefined) {
+          if (this.mode.cyr2lat[cur]) {
             result.append(this.mode.cyr2lat[cur]);
           } else {
             result.append(cur);

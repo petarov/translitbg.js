@@ -6,7 +6,7 @@
  * Released under the MIT license
  * https://github.com/petarov/translitbg.js/blob/master/LICENSE
  */
-;(function($, w, undefined) {
+;(function(w) {
     w.translitbg = {
         /**
          * Transliteration modes
@@ -37,7 +37,7 @@
     function StringBuffer() {
         this.buffer = [];
     }
-    StringBuffer.prototype = $.extend({}, {
+    StringBuffer.prototype = {
         append: function append(string) {
             this.buffer.push(string);
             return this;
@@ -48,7 +48,7 @@
         toArray: function() {
             return this.buffer;
         }
-    });
+    };
 
     var TranslitBGModes = {
         // Обтекаема система - http://bit.ly/14spk2M
@@ -141,13 +141,13 @@
         
         // TODO: система „Данчев-Холмън-Димова-Савова“
         DANCHEV : {},        
-    }
+    };
 
     function translitBG() {
         this.setForward(TranslitBGModes.STREAMLINED);
     }
 
-    translitBG.prototype = $.extend({}, {
+    translitBG.prototype = {
 
         setForward: function(type) {
             this.mode = type;
@@ -199,5 +199,6 @@
         reverse: function(text) {
             throw "Not supported!"; 
         }        
-    });
-}(jQuery, window));
+    };
+
+}(window));

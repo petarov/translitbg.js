@@ -5,10 +5,6 @@ Transliterates Bulgarian to Latin characters.
 
 Javascript транслитерация на българските букви с латински (наречена още латинска транслитерация или латинизация/романизация на българския език).
 
-# Requirements
-
-  * jQuery 1.10+
-
 # Usage
 
 ```html

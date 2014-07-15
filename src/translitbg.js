@@ -1,5 +1,5 @@
 /*
- * translitbg.js v0.9.2
+ * translitbg.js v0.9.3
  * https://github.com/petarov/translitbg.js
  *
  * Copyright 2013 Petar Petrov

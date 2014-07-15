@@ -22,7 +22,7 @@
       mode = mode || this.mode.cyr2lat;
       switch(mode) {
         case this.mode.lat2cyr:
-          throw "Unsupported mode!";
+          throw 'Unsupported mode!';
         break;
         
         case this.mode.cyr2lat:
@@ -44,7 +44,7 @@
       return this;
     },
     toString: function toString() {
-      return this.buffer.join("");
+      return this.buffer.join('');
     },
     toArray: function() {
       return this.buffer;
@@ -154,7 +154,7 @@
       },
 
       setReverse: function(type) {
-        throw "Not supported!"; 
+        throw 'Not implemented!';
       },
       /*
        * Transliterate Cyrillic to Latin characters 
@@ -197,7 +197,7 @@
        * Reverse-transliteration: Latin to Cyrillic characters 
        */
        reverse: function(text) {
-        throw "Not supported!"; 
+        throw 'Not implemented!';
       }        
     };
 

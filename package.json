@@ -1,0 +1,31 @@
+{
+  "name": "translitbg.js",
+  "version": "0.9.3",
+  "description": "Bulgarian to Latin characters transliteration.",
+  "main": "src/translit.bg",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/petarov/translitbg.js.git"
+  },
+  "keywords": [
+    "cyrillic",
+    "transliteration",
+    "bulgarian"
+  ],
+  "author": "Petar Petrov <petar.petrov.georgiev@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/petarov/translitbg.js/issues"
+  },
+  "homepage": "https://github.com/petarov/translitbg.js#readme",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
+  }
+}

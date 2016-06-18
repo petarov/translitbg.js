@@ -10,7 +10,7 @@ describe("Cyr2Lat", function() {
   /*
    * Test 01 - Alphabet
    */
-  it("01 Alphabet", function() {
+  it("tests alphabet", function() {
     var translit = translitbg.create();
     var input = "абвгдежзийклмнопрстуфхцчшщъьюя";
     var expected = "abvgdezhziyklmnoprstufhtschshshtayyuya";
@@ -21,7 +21,7 @@ describe("Cyr2Lat", function() {
   /*
    * Test 02 - Paragraph
    */
-  it("02 Paragraph", function() {
+  it("tests paragraphs", function() {
     var translit = translitbg.create();
     var input = "Всички хора се раждат свободни и равни по достойнство и права."
         + "Те са надарени с разум и съвест и следва да се отнасят помежду си в дух на братство.";
@@ -32,9 +32,20 @@ describe("Cyr2Lat", function() {
   });
 
   /*
-   * Test 03 - Имена
+   * Test 03 - Човешки Имена
    */
-  it("03 Names", function() {
+  it("tests people names", function() {
+    var translit = translitbg.create();
+    assert.equal(translit.in('Самуил').go(), 'Samuil');
+    assert.equal(translit.in('Синтия').go(), 'Sintia');
+    assert.equal(translit.in('Марияна ИваноВа').go(), 'Mariyana IvanoVa');
+    assert.equal(translit.in('Явор').go(), 'Yavor');
+  });
+
+  /*
+   * Test 04 - Имена
+   */
+  it("tests things names", function() {
     var translit = translitbg.create();
     assert.equal(translit.in('Стара планина').go(), 'Stara planina');
     assert.equal(translit.in('Атанасовско езеро').go(), 'Atanasovsko ezero');
@@ -46,17 +57,6 @@ describe("Cyr2Lat", function() {
     assert.equal(translit.in('Перник-север').go(), 'Pernik-sever');
     assert.equal(translit.in('Златни пясъци').go(), 'Zlatni pyasatsi');
     assert.equal(translit.in('Горна Оряховица').go(), 'Gorna Oryahovitsa');
-  });
-
-  /*
-   * Test 04 - Човешки Имена
-   */
-  it("04 Personal Names", function() {
-    var translit = translitbg.create();
-    assert.equal(translit.in('Самуил').go(), 'Samuil');
-    assert.equal(translit.in('Синтия').go(), 'Sintia');
-    assert.equal(translit.in('Марияна ИваноВа').go(), 'Mariyana IvanoVa');
-    assert.equal(translit.in('Явор').go(), 'Yavor');
   });
 
 });

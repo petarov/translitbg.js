@@ -1,39 +1,18 @@
-"use strict";
-
 (function() {
+  "use strict";
+
   var root = this;
   var previous = root.translitbg;
 
   var translitbg = {
-    /**
-     * Transliteration modes
-     */
-    mode: {
-      cyr2lat: 1,
-      lat2cyr: 2,
-    },
 
-    /**
-     * Create new transliteration object
-     * @param  {Integer} mode Mode of operation
-     */
-    create: function(mode) {
-      var m = mode || this.mode.cyr2lat;
-
-      switch(m) {
-        case this.mode.lat2cyr:
-          throw 'Unsupported mode!';
-        break;
-        case this.mode.cyr2lat:
-        default:
-          return new translitBG();
-        break;
-      }
+    create: function() {
+      return new TranslitBG();
     },
 
     noConflict: function() {
       root.translitbg = previous;
-      return self;
+      return this;
     }
 
   };
@@ -150,24 +129,30 @@
     DANCHEV : {},
   };
 
-  function translitBG() {
-    this.setForward(TranslitBGModes.STREAMLINED);
+  function TranslitBG() {
+    this._input = '';
+    this._mode = TranslitBGModes.STREAMLINED;
   }
-  translitBG.prototype = {
+  TranslitBG.prototype = {
 
-    setForward: function(type) {
-      this.mode = type;
+    mode: function(mode) {
+      this._mode = mode;
+      return this;
     },
 
-    setReverse: function(type) {
-      throw 'Not implemented!';
+    in: function(input) {
+      this._input = input;
+      return this;
     },
-    /*
-     * Transliterate Cyrillic to Latin characters
+
+    /**
+     * Transforms Cyrillic to Latin characters.
+     *
+     * @return {string}      Transliterated text
      */
-    transliterate: function(text) {
+    go: function() {
       var result = new StringBuffer();
-      var array = text.split('');
+      var array = this._input.split('');
       // var prev = null;
 
       for (var i = 0; i < array.length; i++) {
@@ -177,18 +162,18 @@
         if (typeof next !== 'undefined') {
           var curToken = cur + next;
 
-          if (this.mode.tokens.ia[curToken]) {
+          if (this._mode.tokens.ia[curToken]) {
             var nextNext = array[i + 2];
             if (typeof nextNext === 'undefined' || /^[-\s]$/.test(nextNext)) {
-              result.append(this.mode.tokens.ia[curToken]);
+              result.append(this._mode.tokens.ia[curToken]);
               i++;
               continue;
             }
           }
         }
 
-        if (this.mode.cyr2lat[cur]) {
-          result.append(this.mode.cyr2lat[cur]);
+        if (this._mode.cyr2lat[cur]) {
+          result.append(this._mode.cyr2lat[cur]);
         } else {
           result.append(cur);
         }
@@ -198,12 +183,14 @@
 
       return result.toString();
     },
-    /*
-     * Reverse-transliteration: Latin to Cyrillic characters
+
+    /**
+     * @deprecated Use @method go()
      */
-    reverse: function(text) {
-      throw 'Not implemented!';
+    transliterate: function() {
+      return this.go();
     }
+
   };
 
   /**

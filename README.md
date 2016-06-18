@@ -7,20 +7,23 @@ Javascript транслитерация на българските букви �
 
 # Usage
 
-## Node
+Use in a **node.js** module:
 
-TODO
+```javascript
+var translitbg = require('translitbg');
+var trans = translitbg.create();
+var result = trans.in('абвгдежзийклмнопрстуфхцчшщъьюя').go();
+// result: abvgdezhziyklmnoprstufhtschshshtayyuya
+```
 
-## Web
+Use in a web page:
 
 ```html
-<script type="text/javascript" src="src/translitbg.js"></script>
+<script type="text/javascript" src="dist/translitbg.js"></script>
 <script>
-    // Cyrillic to Latin transliteration
-    var trans = translitbg.create(translitbg.mode.cyr2lat);
-    var input = "абвгдежзийклмнопрстуфхцчшщъьюя";
-    var expected = "abvgdezhziyklmnoprstufhtschshshtayyuya";
-    var result = trans.transliterate(input);
+    var trans = translitbg.create();
+    var result = trans.in('абвгдежзийклмнопрстуфхцчшщъьюя').go();
+    // result: abvgdezhziyklmnoprstufhtschshshtayyuya
 </script>
 ```
 

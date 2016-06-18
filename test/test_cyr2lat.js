@@ -11,10 +11,10 @@ describe("Cyr2Lat", function() {
    * Test 01 - Alphabet
    */
   it("01 Alphabet", function() {
-    var translit = translitbg.create(translitbg.mode.cyr2lat);
+    var translit = translitbg.create();
     var input = "абвгдежзийклмнопрстуфхцчшщъьюя";
     var expected = "abvgdezhziyklmnoprstufhtschshshtayyuya";
-    var result = translit.transliterate(input);
+    var result = translit.in(input).go();
     assert.equal(result, expected);
   });
 
@@ -22,12 +22,12 @@ describe("Cyr2Lat", function() {
    * Test 02 - Paragraph
    */
   it("02 Paragraph", function() {
-    var translit = translitbg.create(translitbg.mode.cyr2lat);
+    var translit = translitbg.create();
     var input = "Всички хора се раждат свободни и равни по достойнство и права."
         + "Те са надарени с разум и съвест и следва да се отнасят помежду си в дух на братство.";
     var expected = "Vsichki hora se razhdat svobodni i ravni po dostoynstvo i prava." +
         "Te sa nadareni s razum i savest i sledva da se otnasyat pomezhdu si v duh na bratstvo.";
-    var result = translit.transliterate(input);
+    var result = translit.in(input).go();
     assert.equal(result, expected);
   });
 
@@ -35,31 +35,28 @@ describe("Cyr2Lat", function() {
    * Test 03 - Имена
    */
   it("03 Names", function() {
-    var translit = translitbg.create(translitbg.mode.cyr2lat);
-    assert.equal(translit.transliterate('Стара планина'), 'Stara planina');
-    assert.equal(translit.transliterate('Атанасовско езеро'),
-      'Atanasovsko ezero');
-    assert.equal(translit.transliterate('Централен Балкан'),
-      'Tsentralen Balkan');
-    assert.equal(translit.transliterate('София-юг'), 'Sofia-yug');
-    assert.equal(translit.transliterate('СофИя-юг'), 'SofIa-yug');
-    assert.equal(translit.transliterate('СофиЯ-юг'), 'SofiA-yug');
-    assert.equal(translit.transliterate('СофИЯ-ЮГ'), 'SofIA-YuG');
-    assert.equal(translit.transliterate('Перник-север'), 'Pernik-sever');
-    assert.equal(translit.transliterate('Златни пясъци'), 'Zlatni pyasatsi');
-    assert.equal(translit.transliterate('Горна Оряховица'),
-      'Gorna Oryahovitsa');
+    var translit = translitbg.create();
+    assert.equal(translit.in('Стара планина').go(), 'Stara planina');
+    assert.equal(translit.in('Атанасовско езеро').go(), 'Atanasovsko ezero');
+    assert.equal(translit.in('Централен Балкан').go(), 'Tsentralen Balkan');
+    assert.equal(translit.in('София-юг').go(), 'Sofia-yug');
+    assert.equal(translit.in('СофИя-юг').go(), 'SofIa-yug');
+    assert.equal(translit.in('СофиЯ-юг').go(), 'SofiA-yug');
+    assert.equal(translit.in('СофИЯ-ЮГ').go(), 'SofIA-YuG');
+    assert.equal(translit.in('Перник-север').go(), 'Pernik-sever');
+    assert.equal(translit.in('Златни пясъци').go(), 'Zlatni pyasatsi');
+    assert.equal(translit.in('Горна Оряховица').go(), 'Gorna Oryahovitsa');
   });
 
   /*
    * Test 04 - Човешки Имена
    */
   it("04 Personal Names", function() {
-    var translit = translitbg.create(translitbg.mode.cyr2lat);
-    assert.equal(translit.transliterate('Самуил'), 'Samuil');
-    assert.equal(translit.transliterate('Синтия'), 'Sintia');
-    assert.equal(translit.transliterate('Марияна ИваноВа'), 'Mariyana IvanoVa');
-    assert.equal(translit.transliterate('Явор'), 'Yavor');
+    var translit = translitbg.create();
+    assert.equal(translit.in('Самуил').go(), 'Samuil');
+    assert.equal(translit.in('Синтия').go(), 'Sintia');
+    assert.equal(translit.in('Марияна ИваноВа').go(), 'Mariyana IvanoVa');
+    assert.equal(translit.in('Явор').go(), 'Yavor');
   });
 
 });

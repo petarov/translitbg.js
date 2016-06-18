@@ -9,7 +9,7 @@
 
 (function() {
   var root = this;
-  var previous_mymodule = root.mymodule;
+  var previous = root.translitbg;
 
   var translitbg = function() {
     var self = {
@@ -40,7 +40,7 @@
     };
 
     self.noConflict = function() {
-      root.translitbg = previous_patrun;
+      root.translitbg = previous;
       return self;
     };
 
@@ -48,8 +48,8 @@
   };
 
   translitbg.noConflict = function() {
-    root.mymodule = previous_mymodule
-    return mymodule
+    root.translitbg = previous;
+    return translitbg;
   }
 
   /**
@@ -164,72 +164,72 @@
     DANCHEV : {},
   };
 
-    function translitBG() {
-      this.setForward(TranslitBGModes.STREAMLINED);
-    }
-    translitBG.prototype = {
+  function translitBG() {
+    this.setForward(TranslitBGModes.STREAMLINED);
+  }
+  translitBG.prototype = {
 
-      setForward: function(type) {
-        this.mode = type;
-      },
+    setForward: function(type) {
+      this.mode = type;
+    },
 
-      setReverse: function(type) {
-        throw 'Not implemented!';
-      },
-      /*
-       * Transliterate Cyrillic to Latin characters
-       */
-      transliterate: function(text) {
-        var result = new StringBuffer();
-        var array = text.split('');
-        // var prev = null;
+    setReverse: function(type) {
+      throw 'Not implemented!';
+    },
+    /*
+     * Transliterate Cyrillic to Latin characters
+     */
+    transliterate: function(text) {
+      var result = new StringBuffer();
+      var array = text.split('');
+      // var prev = null;
 
-        for (var i = 0; i < array.length; i++) {
-          var cur = array[i];
-          var next = array[i + 1];
+      for (var i = 0; i < array.length; i++) {
+        var cur = array[i];
+        var next = array[i + 1];
 
-          if (typeof next !== 'undefined') {
-            var curToken = cur + next;
+        if (typeof next !== 'undefined') {
+          var curToken = cur + next;
 
-            if (this.mode.tokens.ia[curToken]) {
-              var nextNext = array[i + 2];
-              if (typeof nextNext === 'undefined' || /^[-\s]$/.test(nextNext)) {
-                result.append(this.mode.tokens.ia[curToken]);
-                i++;
-                continue;
-              }
+          if (this.mode.tokens.ia[curToken]) {
+            var nextNext = array[i + 2];
+            if (typeof nextNext === 'undefined' || /^[-\s]$/.test(nextNext)) {
+              result.append(this.mode.tokens.ia[curToken]);
+              i++;
+              continue;
             }
-
           }
-
-          if (this.mode.cyr2lat[cur]) {
-            result.append(this.mode.cyr2lat[cur]);
-          } else {
-            result.append(cur);
-          }
-          // prev = cur;
         }
 
-        return result.toString();
-      },
-      /*
-       * Reverse-transliteration: Latin to Cyrillic characters
-       */
-       reverse: function(text) {
-        throw 'Not implemented!';
-      }
-    };
+        if (this.mode.cyr2lat[cur]) {
+          result.append(this.mode.cyr2lat[cur]);
+        } else {
+          result.append(cur);
+        }
 
-    /**
-     * Exports
-     */
-    if (typeof exports !== 'undefined') {
-      if (typeof module !== 'undefined' && module.exports) {
-        exports = module.exports = translitbg
+        // prev = cur;
       }
-      exports.translitbg = translitbg
-    } else {
-      root.translitbg = translitbg
+
+      return result.toString();
+    },
+    /*
+     * Reverse-transliteration: Latin to Cyrillic characters
+     */
+    reverse: function(text) {
+      throw 'Not implemented!';
     }
+  };
+
+  /**
+   * Exports
+   */
+  if (typeof exports !== 'undefined') {
+    if (typeof module !== 'undefined' && module.exports) {
+      exports = module.exports = translitbg
+    }
+    exports.translitbg = translitbg
+  } else {
+    root.translitbg = translitbg
+  }
 
 }).call(this);

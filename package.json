@@ -26,6 +26,10 @@
   "homepage": "https://github.com/petarov/translitbg.js#readme",
   "devDependencies": {
     "mocha": "^2.5.3",
-    "chai": "^3.5.0"
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.1",
+    "jshint": "^2.9.2",
+    "uglify-js": "^2.6.2"
   }
 }

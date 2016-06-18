@@ -31,7 +31,9 @@ Use in a web page:
 
 Run `npm install` to setup dependencies.
 
-Run `npm test` to run unit tests.
+Run `gulp test` to run unit tests.
+
+Run `gulp dist` to produce distributable.
 
 # References
 

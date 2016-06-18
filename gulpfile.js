@@ -2,6 +2,7 @@ var gulp = require('gulp')
   , fs = require('fs')
   , jshint = require('gulp-jshint')
   , uglifyjs = require('gulp-uglify')
+  , mocha = require('gulp-mocha')
   , header = require('gulp-header')
   , pkg = require('./package.json');
 
@@ -21,6 +22,11 @@ gulp.task('dist', ['lint', 'uglify'], function() {
   return gulp.src('./dist/translitbg.js')
     .pipe(header(fs.readFileSync('./src/header.txt', 'utf8'), { pkg : pkg } ))
     .pipe(gulp.dest('./dist/'));
+});
+
+gulp.task('test', ['lint'], function() {
+  return gulp.src('test/*.js', {read: false})
+    .pipe(mocha());
 });
 
 // -- Default

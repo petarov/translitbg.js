@@ -1,6 +1,8 @@
 translitbg.js
 =================
 
+[![Build Status](https://travis-ci.org/petarov/translitbg.js.svg?branch=master)](https://travis-ci.org/petarov/translitbg.js)
+
 Transliterates Bulgarian to Latin characters.
 
 Транслитерация на българските букви с латински, наречена още латинска транслитерация или латинизация/романизация на българския език.

@@ -1,6 +1,6 @@
 {
   "name": "translitbg.js",
-  "version": "0.9.3",
+  "version": "1.0.0",
   "description": "Bulgarian to Latin characters transliteration.",
   "main": "src/translit.bg",
   "directories": {
@@ -24,8 +24,8 @@
     "url": "https://github.com/petarov/translitbg.js/issues"
   },
   "homepage": "https://github.com/petarov/translitbg.js#readme",
-  "dependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^2.5.3"
+  "devDependencies": {
+    "mocha": "^2.5.3",
+    "chai": "^3.5.0"
   }
 }

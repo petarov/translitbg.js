@@ -24,9 +24,11 @@ TODO
 </script>
 ```
 
-# Tests
+# Development
 
-Run `npm test`.
+Run `npm install` to setup dependencies.
+
+Run `npm test` to run unit tests.
 
 # References
 

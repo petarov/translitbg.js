@@ -1,56 +1,42 @@
-/*
- * translitbg.js v0.9.3
- * https://github.com/petarov/translitbg.js
- *
- * (c) 2013 Petar Petrov
- * Released under the MIT license
- */
 "use strict";
 
 (function() {
   var root = this;
   var previous = root.translitbg;
 
-  var translitbg = function() {
-    var self = {
-      /**
-       * Transliteration modes
-       */
-       mode: {
-        cyr2lat: 1,
-        lat2cyr: 2,
-      },
-      /**
-       * Create new transliteration object
-       * @param  {Integer} mode Mode of operation
-       */
-      create: function(mode) {
-        mode = mode || this.mode.cyr2lat;
-        switch(mode) {
-          case this.mode.lat2cyr:
-            throw 'Unsupported mode!';
-          break;
+  var translitbg = {
+    /**
+     * Transliteration modes
+     */
+    mode: {
+      cyr2lat: 1,
+      lat2cyr: 2,
+    },
 
-          case this.mode.cyr2lat:
-          default:
-            return new translitBG();
-          break;
-        }
+    /**
+     * Create new transliteration object
+     * @param  {Integer} mode Mode of operation
+     */
+    create: function(mode) {
+      var m = mode || this.mode.cyr2lat;
+
+      switch(m) {
+        case this.mode.lat2cyr:
+          throw 'Unsupported mode!';
+        break;
+        case this.mode.cyr2lat:
+        default:
+          return new translitBG();
+        break;
       }
-    };
+    },
 
-    self.noConflict = function() {
+    noConflict: function() {
       root.translitbg = previous;
       return self;
-    };
+    }
 
-    return self;
   };
-
-  translitbg.noConflict = function() {
-    root.translitbg = previous;
-    return translitbg;
-  }
 
   /**
    * StringBuffer - uses an array to address some speed issues under IE
@@ -143,7 +129,7 @@
         'У' : 'U',
         'Ф' : 'F',
         'Х' : 'H',
-        'Ц' : 'Ts',  // TODO: upper or lower case ?
+        'Ц' : 'Ts',
         'Ч' : 'Ch',
         'Ш' : 'SH',
         'Щ' : 'Sht',
@@ -225,11 +211,11 @@
    */
   if (typeof exports !== 'undefined') {
     if (typeof module !== 'undefined' && module.exports) {
-      exports = module.exports = translitbg
+      exports = module.exports = translitbg;
     }
-    exports.translitbg = translitbg
+    exports.translitbg = translitbg;
   } else {
-    root.translitbg = translitbg
+    root.translitbg = translitbg;
   }
 
 }).call(this);

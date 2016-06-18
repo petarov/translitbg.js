@@ -1,3 +1,4 @@
 .c9revisions/
 tests/qunit-*
 bower_components
+dist

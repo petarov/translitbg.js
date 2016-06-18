@@ -18,18 +18,20 @@
     "transliteration",
     "bulgarian"
   ],
-  "author": "Petar Petrov <petar.petrov.georgiev@gmail.com>",
+  "author": "Petar Petrov <petar.petrov.georgiev_at-gmail_doT-com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/petarov/translitbg.js/issues"
   },
   "homepage": "https://github.com/petarov/translitbg.js#readme",
   "devDependencies": {
-    "mocha": "^2.5.3",
     "chai": "^3.5.0",
     "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-header": "^1.8.3",
     "gulp-jshint": "^2.0.1",
+    "gulp-uglify": "^1.5.3",
     "jshint": "^2.9.2",
-    "uglify-js": "^2.6.2"
+    "mocha": "^2.5.3"
   }
 }

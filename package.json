@@ -18,7 +18,7 @@
     "transliteration",
     "bulgarian"
   ],
-  "author": "Petar Petrov <petar.petrov.georgiev_at-gmail_doT-com>",
+  "author": "Petar Petrov <petar.petrov.georgiev@gmail_doT-com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/petarov/translitbg.js/issues"
@@ -35,5 +35,8 @@
     "jshint": "^2.9.2",
     "mocha": "^2.5.3",
     "run-sequence": "^1.2.1"
+  },
+  "engines": {
+      "node": ">= 0.12.x"
   }
 }

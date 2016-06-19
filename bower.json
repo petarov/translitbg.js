@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "homepage": "https://github.com/petarov/translitbg.js",
   "authors": [
-    "Petar Petrov <petar.petrov.georgiev_at-gmail_doT-com>"
+    "Petar Petrov <petar.petrov.georgiev@gmail_doT-com>"
   ],
   "description": "Bulgarian to Latin characters transliteration.",
   "main": "src/translitbg.js",

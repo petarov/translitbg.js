@@ -2,7 +2,7 @@
   "name": "translitbg.js",
   "version": "1.0.0",
   "description": "Bulgarian to Latin characters transliteration.",
-  "main": "src/translit.bg",
+  "main": "src/translitbg.js",
   "directories": {
     "test": "test"
   },

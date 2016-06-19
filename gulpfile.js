@@ -1,4 +1,5 @@
 var gulp = require('gulp')
+  , runSequence = require('run-sequence')
   , fs = require('fs')
   , jshint = require('gulp-jshint')
   , uglifyjs = require('gulp-uglify')
@@ -18,7 +19,7 @@ gulp.task('uglify', function() {
     .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('dist', ['lint', 'uglify'], function() {
+gulp.task('dist', ['uglify'], function() {
   return gulp.src('./dist/translitbg.js')
     .pipe(header(fs.readFileSync('./src/header.txt', 'utf8'), { pkg : pkg } ))
     .pipe(gulp.dest('./dist/'));
@@ -30,4 +31,6 @@ gulp.task('test', ['lint'], function() {
 });
 
 // -- Default
-gulp.task('default', ['dist']);
+gulp.task('default', function(cb) {
+  runSequence('test', 'dist', cb);
+});

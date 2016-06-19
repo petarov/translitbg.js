@@ -1,9 +1,9 @@
 {
   "name": "translitbg.js",
-  "version": "0.9.3",
+  "version": "1.0.0",
   "homepage": "https://github.com/petarov/translitbg.js",
   "authors": [
-    "Petar Petrov <petar.petrov.georgiev@gmail.com>"
+    "Petar Petrov <petar.petrov.georgiev@gmail_doT-com>"
   ],
   "description": "Bulgarian to Latin characters transliteration.",
   "main": "src/translitbg.js",
@@ -14,7 +14,6 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "qunit": "~1.14.0",
     "jquery": "1.x"
   },
   "ignore": [

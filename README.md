@@ -1,34 +1,43 @@
 translitbg.js
 =================
 
-Transliterates Bulgarian to Latin characters. 
+[![Build Status](https://travis-ci.org/petarov/translitbg.js.svg?branch=master)](https://travis-ci.org/petarov/translitbg.js)
 
-Javascript транслитерация на българските букви с латински (наречена още латинска транслитерация или латинизация/романизация на българския език).
+Transliterates Bulgarian to Latin characters.
+
+Транслитерация на българските букви с латински, наречена още латинска транслитерация или латинизация/романизация на българския език.
 
 # Usage
 
+Use in a **node.js** module:
+
+```javascript
+var translitbg = require('translitbg');
+var trans = translitbg.create();
+var result = trans.in('абвгдежзийклмнопрстуфхцчшщъьюя').go();
+// result: abvgdezhziyklmnoprstufhtschshshtayyuya
+```
+
+Use in a web page:
+
 ```html
-<script type="text/javascript" src="src/translitbg.js"></script>
+<script type="text/javascript" src="dist/translitbg.js"></script>
 <script>
-    // Cyrillic to Latin transliteration
-    var trans = translitbg.create(translitbg.mode.cyr2lat);
-    var input = "абвгдежзийклмнопрстуфхцчшщъьюя";
-    var expected = "abvgdezhziyklmnoprstufhtschshshtayyuya";
-    var result = trans.transliterate(input);
+    var trans = translitbg.create();
+    var result = trans.in('абвгдежзийклмнопрстуфхцчшщъьюя').go();
+    // result: abvgdezhziyklmnoprstufhtschshshtayyuya
 </script>
 ```
-# Tests
 
-To run the Qunit tests first install the required bower dependencies via:
+# Development
 
-    bower install
+Run `npm install` to setup dependencies.
 
-You may use Python3 to start an http web server on http://localhost:8000 and run `tests.html`:
+Run `gulp test` to run unit tests.
 
-    python -m http.server
-    Serving HTTP on 0.0.0.0 port 8000 ...
+Run `gulp dist` to produce distributable.
 
 # References
 
 * [Bulgarian Transliteration law](http://bg.wikisource.org/wiki/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD_%D0%B7%D0%B0_%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%D1%82%D0%B0)
-* [Additional information](http://bg.wikipedia.org/wiki/%D0%A2%D1%80%D0%B0%D0%BD%D1%81%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F_%D0%BD%D0%B0_%D0%B1%D1%8A%D0%BB%D0%B3%D0%B0%D1%80%D1%81%D0%BA%D0%B8%D1%82%D0%B5_%D0%B1%D1%83%D0%BA%D0%B2%D0%B8_%D1%81_%D0%BB%D0%B0%D1%82%D0%B8%D0%BD%D1%81%D0%BA%D0%B8) 
+* [Additional information](http://bg.wikipedia.org/wiki/%D0%A2%D1%80%D0%B0%D0%BD%D1%81%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F_%D0%BD%D0%B0_%D0%B1%D1%8A%D0%BB%D0%B3%D0%B0%D1%80%D1%81%D0%BA%D0%B8%D1%82%D0%B5_%D0%B1%D1%83%D0%BA%D0%B2%D0%B8_%D1%81_%D0%BB%D0%B0%D1%82%D0%B8%D0%BD%D1%81%D0%BA%D0%B8)

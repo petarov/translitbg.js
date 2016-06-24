@@ -1,4 +1,4 @@
-translitbg.js
+translitbg
 =================
 
 

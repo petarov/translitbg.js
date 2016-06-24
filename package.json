@@ -1,5 +1,5 @@
 {
-  "name": "translitbg.js",
+  "name": "translitbg",
   "version": "1.0.1",
   "description": "Bulgarian to Latin characters transliteration.",
   "main": "src/translitbg.js",

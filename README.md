@@ -11,6 +11,10 @@ Transliterates Bulgarian to Latin characters.
 
 Транслитерация на българските букви с латински, наречена още латинска транслитерация или латинизация/романизация на българския език.
 
+# Install
+
+    npm install translitbg
+
 # Usage
 
 Use in a **node.js** module:

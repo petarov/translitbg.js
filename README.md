@@ -4,8 +4,8 @@ translitbg
 
 [![npm version][npm-image]][npm-url] [![Build Status](https://travis-ci.org/petarov/translitbg.js.svg?branch=master)](https://travis-ci.org/petarov/translitbg.js)
 
-[npm-url]: https://npmjs.org/package/translitbg.js
-[npm-image]: https://img.shields.io/npm/v/translitbg.js.svg
+[npm-url]: https://www.npmjs.com/package/translitbg
+[npm-image]: https://img.shields.io/npm/v/translitbg.svg
 
 Transliterates Bulgarian to Latin characters.
 

@@ -16,7 +16,7 @@ Transliterates Bulgarian to Latin characters.
 
 or
 
-    yarn install translitbg
+    yarn add translitbg
 
 # Usage
 

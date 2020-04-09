@@ -1,7 +1,7 @@
 /*
  * translitbg - Bulgarian to Latin characters transliteration.
  *
- * @version v1.0.2
+ * @version v1.0.3
  * @link https://github.com/petarov/translitbg.js#readme
  * @license MIT License
  * @author github.com/petarov

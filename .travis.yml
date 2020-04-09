@@ -1,7 +1,5 @@
 language: node_js
 node_js:
-  - "6"
-  - "0.12"
-before_script:
-  - npm install -g gulp
-script: gulp
+  - 12
+  - 13
+cache: yarn

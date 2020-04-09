@@ -1,8 +1,7 @@
 translitbg
 =================
 
-
-[![npm version][npm-image]][npm-url] [![Build Status](https://travis-ci.org/petarov/translitbg.js.svg?branch=master)](https://travis-ci.org/petarov/translitbg.js)
+[![Build Status](https://travis-ci.org/petarov/translitbg.js.svg?branch=master)](https://travis-ci.org/petarov/translitbg.js) [![npm version][npm-image]][npm-url]
 
 [npm-url]: https://www.npmjs.com/package/translitbg
 [npm-image]: https://img.shields.io/npm/v/translitbg.svg
@@ -14,6 +13,10 @@ Transliterates Bulgarian to Latin characters.
 # Install
 
     npm install translitbg
+
+or
+
+    yarn install translitbg
 
 # Usage
 
@@ -29,7 +32,7 @@ var result = trans.in('абвгдежзийклмнопрстуфхцчшщъь�
 Use in a web page:
 
 ```html
-<script type="text/javascript" src="dist/translitbg.js"></script>
+<script type="text/javascript" src="build/translitbg.js"></script>
 <script>
     var trans = translitbg.create();
     var result = trans.in('абвгдежзийклмнопрстуфхцчшщъьюя').go();
@@ -39,11 +42,11 @@ Use in a web page:
 
 # Development
 
-Run `npm install` to setup dependencies.
+Run `yarn install` to install dependencies.
 
-Run `gulp test` to run unit tests.
+Run `yarn test` to run tests.
 
-Run `gulp dist` to produce distributable.
+Run `yarn build` to create build.
 
 # References
 

@@ -1,0 +1,9 @@
+/*
+ * translitbg - Bulgarian to Latin characters transliteration.
+ *
+ * @version v1.0.2
+ * @link https://github.com/petarov/translitbg.js#readme
+ * @license MIT License
+ * @author github.com/petarov
+ */
+(function(){"use strict";var t=this,n=t.translitbg,i={create:function(){return new r},noConflict:function(){return t.translitbg=n,this}};function u(){this.buffer=[]}u.prototype={append:function(t){return this.buffer.push(t),this},toString:function(){return this.buffer.join("")},toArray:function(){return this.buffer}};var e={STREAMLINED:{tokens:{ia:{"ия":"ia","Ия":"Ia","иЯ":"iA","ИЯ":"IA"}},cyr2lat:{"а":"a","б":"b","в":"v","г":"g","д":"d","е":"e","ж":"zh","з":"z","и":"i","й":"y","к":"k","л":"l","м":"m","н":"n","о":"o","п":"p","р":"r","с":"s","т":"t","у":"u","ф":"f","х":"h","ц":"ts","ч":"ch","ш":"sh","щ":"sht","ъ":"a","ь":"y","ю":"yu","я":"ya","А":"A","Б":"B","В":"V","Г":"G","Д":"D","Е":"E","Ж":"Zh","З":"Z","И":"I","Й":"Y","К":"K","Л":"L","М":"M","Н":"N","О":"O","П":"P","Р":"R","С":"S","Т":"T","У":"U","Ф":"F","Х":"H","Ц":"Ts","Ч":"Ch","Ш":"SH","Щ":"Sht","Ъ":"A","Ь":"Y","Ю":"Yu","Я":"Ya"},lat2cyr:{}},BDS_ISO9_2001:{},DANCHEV:{}};function r(){this._input="",this._mode=e.STREAMLINED}r.prototype={mode:function(t){return this._mode=t,this},in:function(t){return this._input=t,this},go:function(){for(var t=new u,n=this._input.split(""),i=0;i<n.length;i++){var e=n[i],r=n[i+1];if(void 0!==r){var o=e+r;if(this._mode.tokens.ia[o]){var s=n[i+2];if(void 0===s||/^[-\s]$/.test(s)){t.append(this._mode.tokens.ia[o]),i++;continue}}}this._mode.cyr2lat[e]?t.append(this._mode.cyr2lat[e]):t.append(e)}return t.toString()},transliterate:function(){return this.go()}},"undefined"!=typeof exports?("undefined"!=typeof module&&module.exports&&(exports=module.exports=i),exports.translitbg=i):t.translitbg=i}).call(this);

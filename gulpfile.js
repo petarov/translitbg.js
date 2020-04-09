@@ -1,5 +1,4 @@
-var gulp = require('gulp')
-  , runSequence = require('run-sequence')
+const { src, dest, pipe, series } = require('gulp')
   , fs = require('fs')
   , jshint = require('gulp-jshint')
   , uglifyjs = require('gulp-uglify')
@@ -7,30 +6,30 @@ var gulp = require('gulp')
   , header = require('gulp-header')
   , pkg = require('./package.json');
 
-gulp.task('lint', function() {
-  return gulp.src(['./src/*.js'])
+function lint() {
+  return src(['./src/*.js'])
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
-});
+}
 
-gulp.task('uglify', function() {
-  return gulp.src('src/translitbg.js')
+function uglify() {
+  return src('src/translitbg.js')
     .pipe(uglifyjs())
-    .pipe(gulp.dest('./dist/'));
-});
+    .pipe(dest('./build/'));
+}
 
-gulp.task('dist', ['uglify'], function() {
-  return gulp.src('./dist/translitbg.js')
-    .pipe(header(fs.readFileSync('./src/header.txt', 'utf8'), { pkg : pkg } ))
-    .pipe(gulp.dest('./dist/'));
-});
+function dist() {
+  return src('./build/translitbg.js')
+    .pipe(header(fs.readFileSync('./src/header.txt', 'utf8'), { pkg } ))
+    .pipe(dest('./build/'));
+}
 
-gulp.task('test', ['lint'], function() {
-  return gulp.src('test/*.js', {read: false})
+function test() {
+  return src('test/*.js', {read: false})
     .pipe(mocha());
-});
+}
 
-// -- Default
-gulp.task('default', function(cb) {
-  runSequence('test', 'dist', cb);
-});
+exports.lint = lint;
+exports.test = series(lint, test);
+exports.build = series(lint, test, uglify, dist);
+exports.default = exports.build

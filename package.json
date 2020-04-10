@@ -18,7 +18,9 @@
   "keywords": [
     "cyrillic",
     "transliteration",
-    "bulgarian"
+    "bulgarian",
+    "cyr2lat",
+    "транслитерация"
   ],
   "author": "Petar Petrov (https://github.com/petarov/translitbg.js)",
   "license": "MIT",

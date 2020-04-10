@@ -1,45 +1,20 @@
 (function() {
   "use strict";
-
   var root = this;
   var previous = root.translitbg;
 
   var translitbg = {
-
-    create: function() {
-      return new TranslitBG();
+    go: function(text) {
+      return transliterate(text, TranslitBGModes.STREAMLINED);
     },
-
     noConflict: function() {
       root.translitbg = previous;
       return this;
     }
-
-  };
-
-  /**
-   * StringBuffer - uses an array to address some speed issues under IE
-   */
-  function StringBuffer() {
-    this.buffer = [];
-  }
-  StringBuffer.prototype = {
-    append: function append(string) {
-      this.buffer.push(string);
-      return this;
-    },
-    toString: function toString() {
-      return this.buffer.join('');
-    },
-    toArray: function() {
-      return this.buffer;
-    }
   };
 
   var TranslitBGModes = {
-    // Обтекаема система - http://bit.ly/14spk2M
-    // Обратимост: Възстановяването на оригиналната дума не е водещ принцип!
-    STREAMLINED : {
+    STREAMLINED : { // Възстановяването на оригиналната дума не е водещ принцип!
       tokens : {
         // 'дж' : 'dzh',
         // 'дз' : 'dz',
@@ -116,82 +91,44 @@
         'Ь' : 'Y',
         'Ю' : 'Yu',
         'Я' : 'Ya'
-      },
-      lat2cyr: {
-        // TODO:
-      },
+      }
     },
-
-    // TODO: БДС ISO 9:2001
-    BDS_ISO9_2001 : {},
-
-    // TODO: система „Данчев-Холмън-Димова-Савова“
-    DANCHEV : {},
+    // // TODO: БДС ISO 9:2001
+    // BDS_ISO9_2001 : {},
+    // // TODO: система „Данчев-Холмън-Димова-Савова“
+    // DANCHEV : {},
   };
 
-  function TranslitBG() {
-    this._input = '';
-    this._mode = TranslitBGModes.STREAMLINED;
-  }
-  TranslitBG.prototype = {
+  function transliterate(text, mode) {
+    var result = [];
+    var chars = text.split('');
 
-    mode: function(mode) {
-      this._mode = mode;
-      return this;
-    },
+    for (var i = 0; i < chars.length; i++) {
+      var cur = chars[i];
+      var next = chars[i + 1];
 
-    in: function(input) {
-      this._input = input;
-      return this;
-    },
+      if (next) {
+        var curToken = cur + next;
 
-    /**
-     * Transforms Cyrillic to Latin characters.
-     *
-     * @return {string}      Transliterated text
-     */
-    go: function() {
-      var result = new StringBuffer();
-      var array = this._input.split('');
-      // var prev = null;
-
-      for (var i = 0; i < array.length; i++) {
-        var cur = array[i];
-        var next = array[i + 1];
-
-        if (typeof next !== 'undefined') {
-          var curToken = cur + next;
-
-          if (this._mode.tokens.ia[curToken]) {
-            var nextNext = array[i + 2];
-            if (typeof nextNext === 'undefined' || /^[-\s]$/.test(nextNext)) {
-              result.append(this._mode.tokens.ia[curToken]);
-              i++;
-              continue;
-            }
+        if (mode.tokens.ia[curToken]) {
+          var nextNext = chars[i + 2];
+          if (!nextNext || /^[-\s]$/.test(nextNext)) {
+            result.push(mode.tokens.ia[curToken]);
+            i++;
+            continue;
           }
         }
-
-        if (this._mode.cyr2lat[cur]) {
-          result.append(this._mode.cyr2lat[cur]);
-        } else {
-          result.append(cur);
-        }
-
-        // prev = cur;
       }
 
-      return result.toString();
-    },
-
-    /**
-     * @deprecated Use @method go()
-     */
-    transliterate: function() {
-      return this.go();
+      if (mode.cyr2lat[cur]) {
+        result.push(mode.cyr2lat[cur]);
+      } else {
+        result.push(cur);
+      }
     }
 
-  };
+    return result.join('');
+  }
 
   /**
    * Exports

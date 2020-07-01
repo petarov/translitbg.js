@@ -5,8 +5,8 @@ var translitbg = require("../src/translitbg.js");
 describe("All tests", function() {
 
   it("test азбука", function() {
-    var result = translitbg.go("абвгдежзийклмнопрстуфхцчшщъьюя");
-    assert.equal(result, "abvgdezhziyklmnoprstufhtschshshtayyuya");
+    var result = translitbg.go("абвгдежзийклмнопрстуфхцчшщъьюяѝ");
+    assert.equal(result, "abvgdezhziyklmnoprstufhtschshshtayyuyai");
   });
 
   it("test изречения, нови редове", function() {
@@ -18,6 +18,10 @@ describe("All tests", function() {
 
     input = "Всички хора \nсе раждат свободни\n и равни по достойнство\n и права.";
     expected = "Vsichki hora \nse razhdat svobodni\n i ravni po dostoynstvo\n i prava.";
+    assert.equal(translitbg.go(input), expected);
+    
+    input = "Ѝ може да бъде намерен и в други езици \nкато руския език и украинския език.";
+    expected = "I mozhe da bade nameren i v drugi ezitsi \nkato ruskia ezik i ukrainskia ezik.";
     assert.equal(translitbg.go(input), expected);
   });
 

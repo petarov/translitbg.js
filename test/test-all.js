@@ -21,7 +21,7 @@ describe("All tests", function() {
     assert.equal(translitbg.go(input), expected);
     
     input = "Ѝ може да бъде намерен и в други езици \nкато руския език и украинския език.";
-    expected = "I mozhe da bade nameren i v drugi ezitsi \nkato ruskiya ezik i ukrainskiya ezik.";
+    expected = "I mozhe da bade nameren i v drugi ezitsi \nkato ruskia ezik i ukrainskia ezik.";
     assert.equal(translitbg.go(input), expected);
   });
 

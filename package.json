@@ -37,7 +37,7 @@
     "gulp-mocha": "^7.0.2",
     "gulp-uglify": "^3.0.2",
     "jshint": "^2.9.2",
-    "mocha": "^7.1.1",
+    "mocha": "^8.0.1",
     "run-sequence": "^2.2.1"
   }
 }

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Транслитерация или превръщане на българските букви с латински</title>
+        <meta name="description" content="Транслитерация на българските букви с латински, наречена още латинска транслитерация или латинизация/романизация на българския език, е процесът на заменяне на българските кирилски знаци със знаци, базирани на латинската азбука.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" />
+    <style media="screen">
+    html,body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    }
+    .hero.is-info {
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+            ), url('backg.jpg') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    .hero .nav, .hero.is-success .nav {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    .hero .subtitle {
+        padding: 3rem 0;
+        line-height: 1.5;
+    }
+    </style>
+</head>
+<body>
+
+<section class="hero is-info is-fullheight">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <p class="title is-2 is-spaced">translitbg.js</p>
+                    <span class="navbar-burger burger" data-target="navbarMenu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+                <div id="navbarMenu" class="navbar-menu">
+                    <div class="navbar-end">
+                        <span class="navbar-item">
+                            <a class="button is-white is-outlined" href="https://github.com/petarov/translitbg.js">
+                                <span class="icon">
+                                    <i class="fab fa-github"></i>
+                                </span>
+                                <span>GitHub</span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        </div>
+
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="column is-12">
+                    <h1 class="title">
+                        Българска Транслитерация
+                    </h1>
+                    <h2 class="subtitle">
+                        Транслитерация на българските букви с латински, наречена още латинска транслитерация или латинизация/романизация на българския език.
+                    </h2>
+                    <div class="box">
+                        <div class="field is-grouped">
+                            <p class="control is-expanded">
+                                <textarea id="input" class="textarea" placeholder="Въведете текст на български" rows="7" maxlength="3000"></textarea>
+                            </p>
+                            <p class="control is-expanded">
+                                <textarea id="output" class="textarea" placeholder="" rows="7" readonly></textarea>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control">
+                                <button class="button is-link" id="translit">Транслитерация</button>
+                                <button class="button is-link is-light" id="clear">Изчистване</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</section>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/translitbg@1.2.0/build/translitbg.js"></script>
+<script>
+(function(w) {
+    document.getElementById("translit").addEventListener("click", function() {
+        document.getElementById("output").value = translitbg.go(document.getElementById("input").value); 
+    });
+    document.getElementById("clear").addEventListener("click", function() {
+        document.getElementById("input").value = "";
+        document.getElementById("output").value = "";
+    });
+}(window));
+</script>
+</body>
+</html>

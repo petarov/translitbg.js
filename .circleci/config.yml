@@ -1,0 +1,41 @@
+version: 2.1
+orbs:
+  node: circleci/node@4.1.0
+jobs:
+  build-and-test:
+    executor:
+      name: node/default
+      tag: 'lts'
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - v1-repo-{{ checksum "yarn.lock" }}
+
+      - run: yarn install
+
+      - save_cache:
+          key: v1-repo-{{ checksum "yarn.lock" }}
+          paths:
+            - "node_modules"
+
+      - run: yarn test
+
+      - run: yarn build
+      
+      - store_test_results:
+          path: test-results
+
+      - store_artifacts:
+          path: build
+          destination: build
+          
+      - store_artifacts:
+          path: test-results
+          destination: test-results
+
+workflows:
+    build-and-test:
+      jobs:
+        - build-and-test

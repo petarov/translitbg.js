@@ -1,6 +1,7 @@
 const { src, dest, pipe, series } = require('gulp')
   , fs = require('fs')
   , jshint = require('gulp-jshint')
+  , jest = require('gulp-jest').default
   , uglifyjs = require('gulp-uglify')
   , mocha = require('gulp-mocha')
   , header = require('gulp-header')
@@ -29,7 +30,23 @@ function test() {
     .pipe(mocha());
 }
 
+function jestit() {
+  return src('test').pipe(jest({
+    "preprocessorIgnorePatterns": [
+      "<rootDir>/dist/", "<rootDir>/node_modules/"
+    ],
+    "testMatch": [
+      "**/test/**/*.js"
+    ],
+    "automock": false,
+    "reporters": [
+      "default",
+      "jest-junit"
+    ]
+  }));
+}
+
 exports.lint = lint;
 exports.test = series(lint, test);
-exports.build = series(lint, test, uglify, dist);
+exports.build = series(lint, test, jestit, uglify, dist);
 exports.default = exports.build

@@ -33,11 +33,18 @@
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.0",
     "gulp-header": "^2.0.9",
+    "gulp-jest": "https://registry.npmjs.org/@jacobq/gulp-jest/-/gulp-jest-4.0.3-PR65.tgz",
     "gulp-jshint": "^2.0.1",
     "gulp-mocha": "^7.0.2",
     "gulp-uglify": "^3.0.2",
+    "jest-cli": "^26.6.3",
+    "jest-junit": "^12.0.0",
     "jshint": "^2.9.2",
     "mocha": "^8.0.1",
     "run-sequence": "^2.2.1"
+  },
+  "jest-junit": {
+    "outputDirectory": "test-results/jest",
+    "outputName": "results.xml"
   }
 }

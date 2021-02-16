@@ -1,8 +1,10 @@
 translitbg
 =================
 
-[![Build Status](https://travis-ci.org/petarov/translitbg.js.svg?branch=master)](https://travis-ci.org/petarov/translitbg.js) [![npm version][npm-image]][npm-url]
+[![CircleCI][cci-image]][cci-url] [![npm version][npm-image]][npm-url]
 
+[cci-url]: https://circleci.com/gh/petarov/translitbg.js
+[cci-image]: https://circleci.com/gh/petarov/translitbg.js.svg?style=svg
 [npm-url]: https://www.npmjs.com/package/translitbg
 [npm-image]: https://img.shields.io/npm/v/translitbg.svg
 

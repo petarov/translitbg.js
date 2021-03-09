@@ -33,7 +33,7 @@ translitbg.go('абвгдежзийклмнопрстуфхцчшщъьюя');
 In a web page:
 
 ```html
-<script type="text/javascript" src="translitbg.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/translitbg@1.2.0/src/translitbg.min.js"></script>
 <script>
   translitbg.go('абвгдежзийклмнопрстуфхцчшщъьюя'); 
   // abvgdezhziyklmnoprstufhtschshshtayyuya

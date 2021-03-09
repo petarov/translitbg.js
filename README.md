@@ -33,7 +33,7 @@ translitbg.go('абвгдежзийклмнопрстуфхцчшщъьюя');
 In a web page:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/translitbg@1.2.0/src/translitbg.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bulgarian-control-numbers@1.0.5/build/bgcn.min.js"></script>
 <script>
   translitbg.go('абвгдежзийклмнопрстуфхцчшщъьюя'); 
   // abvgdezhziyklmnoprstufhtschshshtayyuya

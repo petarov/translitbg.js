@@ -37,7 +37,7 @@
     "gulp-jshint": "^2.0.1",
     "gulp-mocha": "^8.0.0",
     "gulp-uglify": "^3.0.2",
-    "jest-cli": "^27.0.3",
+    "jest-cli": "^28.0.3",
     "jest-junit": "^13.0.0",
     "jshint": "^2.9.2",
     "mocha": "^9.0.1",

@@ -35,7 +35,7 @@
     "gulp-header": "^2.0.9",
     "gulp-jest": "https://registry.npmjs.org/@jacobq/gulp-jest/-/gulp-jest-4.0.3-PR65.tgz",
     "gulp-jshint": "^2.0.1",
-    "gulp-mocha": "^8.0.0",
+    "gulp-mocha": "^9.0.0",
     "gulp-uglify": "^3.0.2",
     "jest-cli": "^29.0.1",
     "jest-junit": "^16.0.0",

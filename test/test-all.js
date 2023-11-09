@@ -28,7 +28,7 @@ describe("All tests", function() {
   it("test човешки имена", function() {
     assert.equal(translitbg.go('Самуил'), 'Samuil');
     assert.equal(translitbg.go('Синтия'), 'Sintia');
-    assert.equal(translitbg.go('Марияна ИваноВа'), 'Mariyana IvanoVa');
+    assert.equal(translitbg.go('Марияна ИваноВа'), 'Mariana IvanoVa');
     assert.equal(translitbg.go('Явор'), 'Yavor');
   });
 

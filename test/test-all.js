@@ -40,6 +40,8 @@ describe("All tests", function() {
     assert.equal(translitbg.go('СофИя-юг'), 'SofIa-yug');
     assert.equal(translitbg.go('СофиЯ-юг'), 'SofiA-yug');
     assert.equal(translitbg.go('СофИЯ-ЮГ'), 'SofIA-YuG');
+    assert.equal(translitbg.go('гр. София, ул. Тракия.'), 'gr. Sofia, ul. Trakia.');
+    assert.equal(translitbg.go('гр. СофИЯ, ул. ТракИя.'), 'gr. SofIA, ul. TrakIa.');
     assert.equal(translitbg.go('Перник-север'), 'Pernik-sever');
     assert.equal(translitbg.go('Златни пясъци'), 'Zlatni pyasatsi');
     assert.equal(translitbg.go('Горна Оряховица'), 'Gorna Oryahovitsa');

@@ -114,7 +114,7 @@
 
         if (mode.tokens.ia[curToken]) {
           var nextNext = chars[i + 2];
-          if (!nextNext || /^[-\s]$/.test(nextNext)) {
+          if (!nextNext || !/^\w+$/.test(nextNext)) {
             result.push(mode.tokens.ia[curToken]);
             i++;
             continue;

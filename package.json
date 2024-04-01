@@ -30,7 +30,7 @@
   "homepage": "https://github.com/petarov/translitbg.js#readme",
   "devDependencies": {
     "chai": "^4.2.0",
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.0",
     "gulp-concat": "^2.6.0",
     "gulp-header": "^2.0.9",
     "gulp-jest": "https://registry.npmjs.org/@jacobq/gulp-jest/-/gulp-jest-4.0.3-PR65.tgz",

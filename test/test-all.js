@@ -152,4 +152,38 @@ describe("All tests", function () {
     assert.equal(translitbg.go('Дълбок'), 'Dalbok');
     assert.equal(translitbg.go('Плитък'), 'Plitak');
   });
+
+  it("test 30 имена на областни градове", function () {
+    assert.equal(translitbg.go('София'), 'Sofia');
+    assert.equal(translitbg.go('Пловдив'), 'Plovdiv');
+    assert.equal(translitbg.go('Варна'), 'Varna');
+    assert.equal(translitbg.go('Бургас'), 'Burgas');
+    assert.equal(translitbg.go('Русе'), 'Ruse');
+    assert.equal(translitbg.go('Стара Загора'), 'Stara Zagora');
+    assert.equal(translitbg.go('Плевен'), 'Pleven');
+    assert.equal(translitbg.go('Сливен'), 'Sliven');
+    assert.equal(translitbg.go('Добрич'), 'Dobrich');
+    assert.equal(translitbg.go('Шумен'), 'Shumen');
+    assert.equal(translitbg.go('Хасково'), 'Haskovo');
+    assert.equal(translitbg.go('Перник'), 'Pernik');
+    assert.equal(translitbg.go('Ямбол'), 'Yambol');
+    assert.equal(translitbg.go('Благоевград'), 'Blagoevgrad');
+    assert.equal(translitbg.go('Велико Търново'), 'Veliko Tarnovo');
+    assert.equal(translitbg.go('Враца'), 'Vratsa');
+    assert.equal(translitbg.go('Габрово'), 'Gabrovo');
+    assert.equal(translitbg.go('Видин'), 'Vidin');
+    assert.equal(translitbg.go('Монтана'), 'Montana');
+    assert.equal(translitbg.go('Ловеч'), 'Lovech');
+    assert.equal(translitbg.go('Разград'), 'Razgrad');
+    assert.equal(translitbg.go('Силистра'), 'Silistra');
+    assert.equal(translitbg.go('Търговище'), 'Targovishte');
+    assert.equal(translitbg.go('Кюстендил'), 'Kyustendil');
+    assert.equal(translitbg.go('Пазарджик'), 'Pazardzhik');
+    assert.equal(translitbg.go('Смолян'), 'Smolyan');
+    assert.equal(translitbg.go('Кърджали'), 'Kardzhali');
+    assert.equal(translitbg.go('Велинград'), 'Velingrad');
+    assert.equal(translitbg.go('Дупница'), 'Dupnitsa');
+    assert.equal(translitbg.go('Петрич'), 'Petrich');
+  });
+  
 });

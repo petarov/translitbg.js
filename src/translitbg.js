@@ -25,7 +25,7 @@
           'ИЯ': 'IA',
         }
       },
-      cyr2lat: {
+      chars: {
         // lower case
         'а': 'a',
         'б': 'b',
@@ -99,26 +99,25 @@
     var chars = text.split('');
 
     for (var i = 0; i < chars.length; i++) {
-      var cur = chars[i];
-      var next = chars[i + 1];
+      var ch = chars[i];
+      var ch2 = chars[i + 1];
 
-      if (next) {
-        var curToken = cur + next;
-
-        if (mode.tokens.ia[curToken]) {
-          var nextNext = chars[i + 2];
-          if (!nextNext || !/^\w+$/.test(nextNext)) {
-            result.push(mode.tokens.ia[curToken]);
+      if (ch2) {
+        var token = mode.tokens.ia[ch + ch2];
+        if (token) {
+          var ch3 = chars[i + 2];
+          if (!ch3 || !/^\w+$/.test(ch3)) {
+            result.push(token);
             i++;
             continue;
           }
         }
       }
 
-      if (mode.cyr2lat[cur]) {
-        result.push(mode.cyr2lat[cur]);
+      if (mode.chars[ch]) {
+        result.push(mode.chars[ch]);
       } else {
-        result.push(cur);
+        result.push(ch);
       }
     }
 

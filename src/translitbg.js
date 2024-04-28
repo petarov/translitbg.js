@@ -94,6 +94,64 @@
     }
   };
 
+  // lookup table for uppercase letters
+  var UC = {
+    'А': true,
+    'Б': true,
+    'В': true,
+    'Г': true,
+    'Д': true,
+    'Е': true,
+    'Ж': true,
+    'З': true,
+    'И': true,
+    'Ѝ': true,
+    'Й': true,
+    'К': true,
+    'Л': true,
+    'М': true,
+    'Н': true,
+    'О': true,
+    'П': true,
+    'Р': true,
+    'С': true,
+    'Т': true,
+    'У': true,
+    'Ф': true,
+    'Х': true,
+    'Ц': true,
+    'Ч': true,
+    'Ш': true,
+    'Щ': true,
+    'Ъ': true,
+    'Ь': true,
+    'Ю': true,
+    'Я': true,
+  };
+
+  function isComboUC(ch) {
+    return ch == 'Ж' ||
+      ch == 'Ц' ||
+      ch == 'Ч' ||
+      ch == 'Ш' ||
+      ch == 'Щ' ||
+      ch == 'Ю' ||
+      ch == 'Я';
+  }
+
+  function toComboUC(ch) {
+    switch (ch) {
+      case 'Ж': return 'ZH';
+      case 'Ц': return 'TS';
+      case 'Ч': return 'CH';
+      case 'Ш': return 'SH';
+      case 'Щ': return 'SHT';
+      case 'Ю': return 'YU';
+      case 'Я': return 'YA';
+    }
+    return ch;
+  }
+
   function transliterate(text, mode) {
     var result = [];
     var chars = text.split('');
@@ -114,8 +172,13 @@
         }
       }
 
-      if (mode.chars[ch]) {
-        result.push(mode.chars[ch]);
+      var found = mode.chars[ch];
+      if (found) {
+        if (isComboUC(ch) && (!ch2 || UC[ch2])) {
+          result.push(toComboUC(ch));
+        } else {
+          result.push(found);
+        }
       } else {
         result.push(ch);
       }
@@ -125,8 +188,8 @@
   }
 
   /**
-   * Exports
-   */
+  * Exports
+  */
   if (typeof exports !== 'undefined') {
     if (typeof module !== 'undefined' && module.exports) {
       exports = module.exports = translitbg;

@@ -11,9 +11,9 @@ describe('All tests', function () {
 
   it('test изречения, нови редове', function () {
     var input = 'Всички хора се раждат свободни и равни по достойнство и права.'
-      + 'Те са надарени с разум и съвест и следва да се отнасят помежду си в дух на братство.';
+    + 'Те са надарени с разум и съвест и следва да се отнасят помежду си в дух на братство.';
     var expected = 'Vsichki hora se razhdat svobodni i ravni po dostoynstvo i prava.' +
-      'Te sa nadareni s razum i savest i sledva da se otnasyat pomezhdu si v duh na bratstvo.';
+    'Te sa nadareni s razum i savest i sledva da se otnasyat pomezhdu si v duh na bratstvo.';
     assert.equal(translitbg.go(input), expected);
 
     input = 'Всички хора \nсе раждат свободни\n и равни по достойнство\n и права.';
@@ -24,7 +24,7 @@ describe('All tests', function () {
     expected = 'I mozhe da bade nameren i v drugi ezitsi \nkato ruskia ezik i ukrainskia ezik.';
     assert.equal(translitbg.go(input), expected);
 
-		// --- mixed
+    // --- mixed
 
     input = 'Seдем с едin udар';
     expected = 'Sedem s edin udar';
@@ -42,6 +42,30 @@ describe('All tests', function () {
     assert.equal(translitbg.go('Явор'), 'Yavor');
   });
 
+  it('test специални случаи', function () {
+    assert.equal(translitbg.go('Стара планина'), 'Stara planina');
+    assert.equal(translitbg.go('Атанасовско езеро'), 'Atanasovsko ezero');
+    assert.equal(translitbg.go('Централен Балкан'), 'Tsentralen Balkan');
+    assert.equal(translitbg.go('ЖЕЗЪЛ'), 'ZHEZAL');
+    assert.equal(translitbg.go('жЕЗЪЛ'), 'zhEZAL');
+    assert.equal(translitbg.go('жезъл'), 'zhezal');
+    assert.equal(translitbg.go('ЦАРЕВЕЦ'), 'TSAREVETS');
+    assert.equal(translitbg.go('Царевец'), 'Tsarevets');
+    assert.equal(translitbg.go('ЦАРевец'), 'TSARevets');
+    assert.equal(translitbg.go('цАРЕВЕЦ'), 'tsAREVETS');
+    assert.equal(translitbg.go('чОвек'), 'chOvek');
+    assert.equal(translitbg.go('ЧОВек'), 'CHOVek');
+    assert.equal(translitbg.go('ШИВАЧ'), 'SHIVACH');
+    assert.equal(translitbg.go('шИВАч'), 'shIVAch');
+    assert.equal(translitbg.go('ЩАСТИЕ'), 'SHTASTIE');
+    assert.equal(translitbg.go('щАСТИЕ'), 'shtASTIE');
+    assert.equal(translitbg.go('ЩаСТИЕ'), 'ShtaSTIE');
+    assert.equal(translitbg.go('ЮНГА'), 'YUNGA');
+    assert.equal(translitbg.go('юНГА'), 'yuNGA');
+    assert.equal(translitbg.go('ЯБЪЛКИ'), 'YABALKI');
+    assert.equal(translitbg.go('яБЪЛКИ'), 'yaBALKI');
+  });
+
   it('test места и адреси', function () {
     assert.equal(translitbg.go('Стара планина'), 'Stara planina');
     assert.equal(translitbg.go('Атанасовско езеро'), 'Atanasovsko ezero');
@@ -49,7 +73,7 @@ describe('All tests', function () {
     assert.equal(translitbg.go('София-юг'), 'Sofia-yug');
     assert.equal(translitbg.go('СофИя-юг'), 'SofIa-yug');
     assert.equal(translitbg.go('СофиЯ-юг'), 'SofiA-yug');
-    assert.equal(translitbg.go('СофИЯ-ЮГ'), 'SofIA-YuG');
+    assert.equal(translitbg.go('СофИЯ-ЮГ'), 'SofIA-YUG');
     assert.equal(translitbg.go('гр. София, ул. Тракия.'), 'gr. Sofia, ul. Trakia.');
     assert.equal(translitbg.go('гр. СофИЯ, ул. ТракИя.'), 'gr. SofIA, ul. TrakIa.');
     assert.equal(translitbg.go('Перник-север'), 'Pernik-sever');
@@ -195,5 +219,5 @@ describe('All tests', function () {
     assert.equal(translitbg.go('Дупница'), 'Dupnitsa');
     assert.equal(translitbg.go('Петрич'), 'Petrich');
   });
-  
+
 });

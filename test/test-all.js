@@ -24,6 +24,10 @@ describe('All tests', function () {
     expected = 'I mozhe da bade nameren i v drugi ezitsi \nkato ruskia ezik i ukrainskia ezik.';
     assert.equal(translitbg(input), expected);
 
+    input = 'СанЯ е на път за ЦаревеЦ-крепост и има МАНТИЯ от Желязо и Злато, носи ЖЕзъл и корона.';
+    expected = 'SanYA e na pat za TsareveTS-krepost i ima MANTIA ot Zhelyazo i Zlato, nosi ZHEzal i korona.';
+    assert.equal(translitbg(input), expected);
+
     // --- mixed
 
     input = 'Seдем с едin udар';
@@ -40,6 +44,9 @@ describe('All tests', function () {
     assert.equal(translitbg('Синтия'), 'Sintia');
     assert.equal(translitbg('Марияна ИваноВа'), 'Mariana IvanoVa');
     assert.equal(translitbg('Явор'), 'Yavor');
+    assert.equal(translitbg('Саня'), 'Sanya');
+    assert.equal(translitbg('СанЯ'), 'SanYA');
+    assert.equal(translitbg('САНЯ'), 'SANYA');
   });
 
   it('test специални случаи', function () {

@@ -155,7 +155,7 @@
         }
 
         var ucc = mode.ucc[ch];
-        if (ucc && (!ch2 || ALPHABET_UC[ch2])) {
+        if (ucc && (!ch2 || ALPHABET_UC[ch2] || !mode.chars[ch2])) {
           result.push(ucc);
         } else {
           result.push(found);

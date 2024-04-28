@@ -23,6 +23,16 @@ describe("All tests", function () {
     input = "Ѝ може да бъде намерен и в други езици \nкато руския език и украинския език.";
     expected = "I mozhe da bade nameren i v drugi ezitsi \nkato ruskia ezik i ukrainskia ezik.";
     assert.equal(translitbg.go(input), expected);
+
+		// --- mixed
+
+    input = 'Seдем с едin udар';
+    expected = 'Sedem s edin udar';
+    assert.equal(translitbg.go(input), expected);
+
+    input = 'Внезapna-smqна-на-$олаri-i-еüро';
+    expected = 'Vnezapna-smqna-na-$olari-i-eüro';
+    assert.equal(translitbg.go(input), expected);
   });
 
   it("test човешки имена", function () {
@@ -32,7 +42,7 @@ describe("All tests", function () {
     assert.equal(translitbg.go('Явор'), 'Yavor');
   });
 
-  it("test други имена", function () {
+  it("test места и адреси", function () {
     assert.equal(translitbg.go('Стара планина'), 'Stara planina');
     assert.equal(translitbg.go('Атанасовско езеро'), 'Atanasovsko ezero');
     assert.equal(translitbg.go('Централен Балкан'), 'Tsentralen Balkan');

@@ -2,7 +2,6 @@
  * <%= pkg.name %> - <%= pkg.description %>
  *
  * @version v<%= pkg.version %>
- * @link <%= pkg.homepage %>
  * @license <%= pkg.license %> License
- * @author github.com/petarov
+ * @link <%= pkg.homepage %>
  */

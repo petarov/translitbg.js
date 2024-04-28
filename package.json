@@ -1,7 +1,7 @@
 {
   "name": "translitbg",
   "version": "1.3.1",
-  "description": "Bulgarian to Latin characters transliteration.",
+  "description": "Bulgarian to Latin transliteration (Транслитерация на български с латински букви)",
   "main": "src/translitbg.js",
   "directories": {
     "test": "test"
@@ -16,18 +16,21 @@
     "url": "https://github.com/petarov/translitbg.js.git"
   },
   "keywords": [
-    "cyrillic",
     "transliteration",
+    "transliterate",
     "bulgarian",
+    "cyrillic",
     "cyr2lat",
-    "транслитерация"
+    "romanization",
+    "транслитерация",
+    "транслит"
   ],
-  "author": "Petar Petrov (https://github.com/petarov/translitbg.js)",
+  "author": "Petar Petrov",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/petarov/translitbg.js/issues"
   },
-  "homepage": "https://github.com/petarov/translitbg.js#readme",
+  "homepage": "https://www.npmjs.com/package/translitbg",
   "devDependencies": {
     "chai": "^4.2.0",
     "gulp": "^5.0.0",

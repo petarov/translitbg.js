@@ -1,6 +1,6 @@
 ### What is this about?
 
-Description or issues #`<issue id>`
+Description or issue #`<id>`
 
 ### Breaking change?
 

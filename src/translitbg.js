@@ -5,7 +5,7 @@
 
   var translitbg = {
     go: function (text) {
-      return transliterate(text, TranslitBGModes.STREAMLINED);
+      return transliterate(text, Mode.STREAMLINED);
     },
     noConflict: function () {
       root.translitbg = previous;
@@ -13,18 +13,43 @@
     }
   };
 
-  var TranslitBGModes = {
-    // Възстановяването на оригиналната дума не е водещ принцип
+  var ALPHABET_UC = {
+    'А': true,
+    'Б': true,
+    'В': true,
+    'Г': true,
+    'Д': true,
+    'Е': true,
+    'Ж': true,
+    'З': true,
+    'И': true,
+    'Ѝ': true,
+    'Й': true,
+    'К': true,
+    'Л': true,
+    'М': true,
+    'Н': true,
+    'О': true,
+    'П': true,
+    'Р': true,
+    'С': true,
+    'Т': true,
+    'У': true,
+    'Ф': true,
+    'Х': true,
+    'Ц': true,
+    'Ч': true,
+    'Ш': true,
+    'Щ': true,
+    'Ъ': true,
+    'Ь': true,
+    'Ю': true,
+    'Я': true,
+  };
+
+  var Mode = {
+    // Обтекаема система: Възстановяването на оригиналната дума не е водещ принцип
     STREAMLINED: {
-      tokens: {
-        // Буквеното съчетание „ия“, когато е в края на думата, се изписва и предава чрез „ia“
-        ia: {
-          'ия': 'ia',
-          'Ия': 'Ia',
-          'иЯ': 'iA',
-          'ИЯ': 'IA',
-        }
-      },
       chars: {
         // lower case
         'а': 'a',
@@ -90,67 +115,26 @@
         'Ь': 'Y',
         'Ю': 'Yu',
         'Я': 'Ya'
+      },
+      tokens: {
+        // Буквеното съчетание „ия“, когато е в края на думата, се изписва и предава чрез „ia“
+        'ия': 'ia',
+        'Ия': 'Ia',
+        'иЯ': 'iA',
+        'ИЯ': 'IA',
+      },
+      // uppercase combos
+      ucc: {
+        'Ж': 'ZH',
+        'Ц': 'TS',
+        'Ч': 'CH',
+        'Ш': 'SH',
+        'Щ': 'SHT',
+        'Ю': 'YU',
+        'Я': 'YA',
       }
     }
   };
-
-  // lookup table for uppercase letters
-  var UC = {
-    'А': true,
-    'Б': true,
-    'В': true,
-    'Г': true,
-    'Д': true,
-    'Е': true,
-    'Ж': true,
-    'З': true,
-    'И': true,
-    'Ѝ': true,
-    'Й': true,
-    'К': true,
-    'Л': true,
-    'М': true,
-    'Н': true,
-    'О': true,
-    'П': true,
-    'Р': true,
-    'С': true,
-    'Т': true,
-    'У': true,
-    'Ф': true,
-    'Х': true,
-    'Ц': true,
-    'Ч': true,
-    'Ш': true,
-    'Щ': true,
-    'Ъ': true,
-    'Ь': true,
-    'Ю': true,
-    'Я': true,
-  };
-
-  function isComboUC(ch) {
-    return ch == 'Ж' ||
-      ch == 'Ц' ||
-      ch == 'Ч' ||
-      ch == 'Ш' ||
-      ch == 'Щ' ||
-      ch == 'Ю' ||
-      ch == 'Я';
-  }
-
-  function toComboUC(ch) {
-    switch (ch) {
-      case 'Ж': return 'ZH';
-      case 'Ц': return 'TS';
-      case 'Ч': return 'CH';
-      case 'Ш': return 'SH';
-      case 'Щ': return 'SHT';
-      case 'Ю': return 'YU';
-      case 'Я': return 'YA';
-    }
-    return ch;
-  }
 
   function transliterate(text, mode) {
     var result = [];
@@ -164,7 +148,7 @@
         var ch2 = chars[i + 1];
 
         if (ch2) {
-          var token = mode.tokens.ia[ch + ch2];
+          var token = mode.tokens[ch + ch2];
           if (token) {
             var ch3 = chars[i + 2];
             if (!ch3 || !/^\w+$/.test(ch3)) {
@@ -175,8 +159,9 @@
           }
         }
 
-        if (isComboUC(ch) && (!ch2 || UC[ch2])) {
-          result.push(toComboUC(ch));
+        var ucc = mode.ucc[ch];
+        if (ucc && (!ch2 || ALPHABET_UC[ch2])) {
+          result.push(ucc);
         } else {
           result.push(found);
         }

@@ -30,7 +30,7 @@
   "bugs": {
     "url": "https://github.com/petarov/translitbg.js/issues"
   },
-  "homepage": "https://www.npmjs.com/package/translitbg",
+  "homepage": "https://github.com/petarov/translitbg.js#readme",
   "devDependencies": {
     "chai": "^4.2.0",
     "gulp": "^5.0.0",

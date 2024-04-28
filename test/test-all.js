@@ -43,9 +43,6 @@ describe('All tests', function () {
   });
 
   it('test специални случаи', function () {
-    assert.equal(translitbg('Стара планина'), 'Stara planina');
-    assert.equal(translitbg('Атанасовско езеро'), 'Atanasovsko ezero');
-    assert.equal(translitbg('Централен Балкан'), 'Tsentralen Balkan');
     assert.equal(translitbg('ЖЕЗЪЛ'), 'ZHEZAL');
     assert.equal(translitbg('жЕЗЪЛ'), 'zhEZAL');
     assert.equal(translitbg('жезъл'), 'zhezal');

@@ -92,11 +92,11 @@
 
 </section>
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/translitbg@1.3.0/build/translitbg.js"></script>
+<script type="text/javascript" src="./translitbg.js"></script>
 <script>
 (function(w) {
     document.getElementById("translit").addEventListener("click", function() {
-        document.getElementById("output").value = translitbg.go(document.getElementById("input").value); 
+        document.getElementById("output").value = translitbg(document.getElementById("input").value);
     });
     document.getElementById("clear").addEventListener("click", function() {
         document.getElementById("input").value = "";

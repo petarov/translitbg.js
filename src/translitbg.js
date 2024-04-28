@@ -158,22 +158,23 @@
 
     for (var i = 0; i < chars.length; i++) {
       var ch = chars[i];
-      var ch2 = chars[i + 1];
+      var found = mode.chars[ch];
 
-      if (ch2) {
-        var token = mode.tokens.ia[ch + ch2];
-        if (token) {
-          var ch3 = chars[i + 2];
-          if (!ch3 || !/^\w+$/.test(ch3)) {
-            result.push(token);
-            i++;
-            continue;
+      if (found) {
+        var ch2 = chars[i + 1];
+
+        if (ch2) {
+          var token = mode.tokens.ia[ch + ch2];
+          if (token) {
+            var ch3 = chars[i + 2];
+            if (!ch3 || !/^\w+$/.test(ch3)) {
+              result.push(token);
+              i++;
+              continue;
+            }
           }
         }
-      }
 
-      var found = mode.chars[ch];
-      if (found) {
         if (isComboUC(ch) && (!ch2 || UC[ch2])) {
           result.push(toComboUC(ch));
         } else {

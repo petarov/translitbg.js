@@ -22,31 +22,36 @@ or
 
 # Usage
 
-In node.js:
+Import in Node:
 
 ```javascript
-const translitbg = require('translitbg');
-translitbg.go('абвгдежзийклмнопрстуфхцчшщъьюя'); 
-// abvgdezhziyklmnoprstufhtschshshtayyuya
+const translitbg = require('translitbg').default
 ```
 
-In a web page:
+Add to a web page:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/translitbg@1.3.1/build/translitbg.js"></script>
-<script>
-  translitbg.go('абвгдежзийклмнопрстуфхцчшщъьюя'); 
-  // abvgdezhziyklmnoprstufhtschshshtayyuya
-</script>
+```
+
+Usage:
+
+```javascript
+translitbg('абвгдежзийклмнопрстуфхцчшщъьюя');
+// abvgdezhziyklmnoprstufhtschshshtayyuya
+translitbg('Стара планина');
+// Stara planina
+translitbg('Горна Оряховица');
+// Gorna Oryahovitsa
 ```
 
 # Development
 
-Run `yarn install` to install dependencies.
+Run `yarn install` to install dependencies
 
-Run `yarn test` to run tests.
+Run `yarn test` to run tests
 
-Run `yarn build` to create build.
+Run `yarn build` to create build
 
 # References
 

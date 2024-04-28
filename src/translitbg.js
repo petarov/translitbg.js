@@ -1,15 +1,10 @@
 (function () {
   "use strict";
-  var root = this;
-  var previous = root.translitbg;
 
+  var root = this;
   var translitbg = {
-    go: function (text) {
+    default: function (text) {
       return transliterate(text, Mode.STREAMLINED);
-    },
-    noConflict: function () {
-      root.translitbg = previous;
-      return this;
     }
   };
 
@@ -173,15 +168,11 @@
     return result.join('');
   }
 
-  /**
-  * Exports
-  */
-  if (typeof exports !== 'undefined') {
-    if (typeof module !== 'undefined' && module.exports) {
-      exports = module.exports = translitbg;
-    }
-    exports.translitbg = translitbg;
+  if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = translitbg; // CommonJS2
+  } else if (typeof exports === 'object') {
+    exports.translitbg = translitbg; // CommonJS
   } else {
-    root.translitbg = translitbg;
+    root.translitbg = translitbg.default; // Window
   }
 }).call(this);

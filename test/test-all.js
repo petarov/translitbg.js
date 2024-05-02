@@ -39,16 +39,6 @@ describe('All tests', function () {
     assert.equal(translitbg(input), expected);
   });
 
-  it('test човешки имена', function () {
-    assert.equal(translitbg('Самуил'), 'Samuil');
-    assert.equal(translitbg('Синтия'), 'Sintia');
-    assert.equal(translitbg('Марияна ИваноВа'), 'Mariana IvanoVa');
-    assert.equal(translitbg('Явор'), 'Yavor');
-    assert.equal(translitbg('Саня'), 'Sanya');
-    assert.equal(translitbg('СанЯ'), 'SanYA');
-    assert.equal(translitbg('САНЯ'), 'SANYA');
-  });
-
   it('test специални съчетания', function () {
     assert.equal(translitbg('ЖЕЗЪЛ'), 'ZHEZAL');
     assert.equal(translitbg('жЕЗЪЛ'), 'zhEZAL');
@@ -230,4 +220,64 @@ describe('All tests', function () {
     assert.equal(translitbg('Петрич'), 'Petrich');
   });
 
+  it('test 50+ човешки имена', function () {
+    assert.equal(translitbg('Самуил'), 'Samuil');
+    assert.equal(translitbg('Синтия'), 'Sintia');
+    assert.equal(translitbg('Марияна ИваноВа'), 'Mariana IvanoVa');
+    assert.equal(translitbg('Явор'), 'Yavor');
+    assert.equal(translitbg('Саня'), 'Sanya');
+    assert.equal(translitbg('СанЯ'), 'SanYA');
+    assert.equal(translitbg('САНЯ'), 'SANYA');
+    // 50 random names
+    assert.equal(translitbg('Иван'), 'Ivan');
+    assert.equal(translitbg('Георги'), 'Georgi');
+    assert.equal(translitbg('Мария'), 'Maria');
+    assert.equal(translitbg('Димитър'), 'Dimitar');
+    assert.equal(translitbg('Николай'), 'Nikolay');
+    assert.equal(translitbg('Петър'), 'Petar');
+    assert.equal(translitbg('Анна'), 'Anna');
+    assert.equal(translitbg('Васил'), 'Vasil');
+    assert.equal(translitbg('Стефан'), 'Stefan');
+    assert.equal(translitbg('Елена'), 'Elena');
+    assert.equal(translitbg('Александър'), 'Aleksandar');
+    assert.equal(translitbg('Таня'), 'Tanya');
+    assert.equal(translitbg('Стефания'), 'Stefania');
+    assert.equal(translitbg('Виктория'), 'Viktoria');
+    assert.equal(translitbg('Илия'), 'Ilia');
+    assert.equal(translitbg('Даниел'), 'Daniel');
+    assert.equal(translitbg('Михаил'), 'Mihail');
+    assert.equal(translitbg('Радослав'), 'Radoslav');
+    assert.equal(translitbg('Йордан'), 'Yordan');
+    assert.equal(translitbg('Валентин'), 'Valentin');
+    assert.equal(translitbg('Светлана'), 'Svetlana');
+    assert.equal(translitbg('Христо'), 'Hristo');
+    assert.equal(translitbg('Маргарита'), 'Margarita');
+    assert.equal(translitbg('Надя'), 'Nadya');
+    assert.equal(translitbg('Павел'), 'Pavel');
+    assert.equal(translitbg('Виолета'), 'Violeta');
+    assert.equal(translitbg('Симеон'), 'Simeon');
+    assert.equal(translitbg('Румяна'), 'Rumyana');
+    assert.equal(translitbg('Ивелина'), 'Ivelina');
+    assert.equal(translitbg('Веселин'), 'Veselin');
+    assert.equal(translitbg('Емилия'), 'Emilia');
+    assert.equal(translitbg('Ангел'), 'Angel');
+    assert.equal(translitbg('Стойко'), 'Stoyko');
+    assert.equal(translitbg('Соня'), 'Sonya');
+    assert.equal(translitbg('Любомир'), 'Lyubomir');
+    assert.equal(translitbg('Магдалена'), 'Magdalena');
+    assert.equal(translitbg('Анастасия'), 'Anastasia');
+    assert.equal(translitbg('Красимир'), 'Krasimir');
+    assert.equal(translitbg('Десислава'), 'Desislava');
+    assert.equal(translitbg('Галина'), 'Galina');
+    assert.equal(translitbg('Евгени'), 'Evgeni');
+    assert.equal(translitbg('Росица'), 'Rositsa');
+    assert.equal(translitbg('Кирил'), 'Kiril');
+    assert.equal(translitbg('Дарина'), 'Darina');
+    assert.equal(translitbg('Вера'), 'Vera');
+    assert.equal(translitbg('Живка'), 'Zhivka');
+    assert.equal(translitbg('Борис'), 'Boris');
+    assert.equal(translitbg('Яна'), 'Yana');
+    assert.equal(translitbg('Пламен'), 'Plamen');
+    assert.equal(translitbg('Милена'), 'Milena');
+  });
 });

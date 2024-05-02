@@ -9,37 +9,37 @@
   };
 
   var ALPHABET_UC = {
-    'А': true,
-    'Б': true,
-    'В': true,
-    'Г': true,
-    'Д': true,
-    'Е': true,
-    'Ж': true,
-    'З': true,
-    'И': true,
-    'Ѝ': true,
-    'Й': true,
-    'К': true,
-    'Л': true,
-    'М': true,
-    'Н': true,
-    'О': true,
-    'П': true,
-    'Р': true,
-    'С': true,
-    'Т': true,
-    'У': true,
-    'Ф': true,
-    'Х': true,
-    'Ц': true,
-    'Ч': true,
-    'Ш': true,
-    'Щ': true,
-    'Ъ': true,
-    'Ь': true,
-    'Ю': true,
-    'Я': true,
+    'А': 1,
+    'Б': 1,
+    'В': 1,
+    'Г': 1,
+    'Д': 1,
+    'Е': 1,
+    'Ж': 1,
+    'З': 1,
+    'И': 1,
+    'Ѝ': 1,
+    'Й': 1,
+    'К': 1,
+    'Л': 1,
+    'М': 1,
+    'Н': 1,
+    'О': 1,
+    'П': 1,
+    'Р': 1,
+    'С': 1,
+    'Т': 1,
+    'У': 1,
+    'Ф': 1,
+    'Х': 1,
+    'Ц': 1,
+    'Ч': 1,
+    'Ш': 1,
+    'Щ': 1,
+    'Ъ': 1,
+    'Ь': 1,
+    'Ю': 1,
+    'Я': 1,
   };
 
   var Mode = {
@@ -134,6 +134,7 @@
   function transliterate(text, mode) {
     var result = [];
     var chars = text.split('');
+    var ch_1;
 
     for (var i = 0; i < chars.length; i++) {
       var ch = chars[i];
@@ -149,13 +150,14 @@
             if (!ch3 || !/^\w+$/.test(ch3)) {
               result.push(token);
               i++;
+              ch_1 = ch3;
               continue;
             }
           }
         }
 
         var ucc = mode.ucc[ch];
-        if (ucc && (!ch2 || ALPHABET_UC[ch2] || !mode.chars[ch2])) {
+        if (ucc && (!ch2 || ALPHABET_UC[ch2] || !mode.chars[ch2] || mode.chars[ch_1])) {
           result.push(ucc);
         } else {
           result.push(found);
@@ -163,6 +165,8 @@
       } else {
         result.push(ch);
       }
+
+      ch_1 = ch;
     }
 
     return result.join('');

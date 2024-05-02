@@ -1,7 +1,5 @@
 /*
- * <%= pkg.name %> - <%= pkg.description %>
- *
- * @version v<%= pkg.version %>
- * @license <%= pkg.license %> License
- * @link <%= pkg.homepage %>
+ * <%= pkg.name %> v<%= pkg.version %> <<%= pkg.homepage %>>
+ * Copyright (c) 2016 <%= pkg.author %>
+ * Licensed under the <%= pkg.license %> license
  */

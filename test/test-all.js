@@ -11,9 +11,9 @@ describe('All tests', function () {
 
   it('test изречения, нови редове', function () {
     var input = 'Всички хора се раждат свободни и равни по достойнство и права.'
-    + 'Те са надарени с разум и съвест и следва да се отнасят помежду си в дух на братство.';
+      + 'Те са надарени с разум и съвест и следва да се отнасят помежду си в дух на братство.';
     var expected = 'Vsichki hora se razhdat svobodni i ravni po dostoynstvo i prava.' +
-    'Te sa nadareni s razum i savest i sledva da se otnasyat pomezhdu si v duh na bratstvo.';
+      'Te sa nadareni s razum i savest i sledva da se otnasyat pomezhdu si v duh na bratstvo.';
     assert.equal(translitbg(input), expected);
 
     input = 'Всички хора \nсе раждат свободни\n и равни по достойнство\n и права.';
@@ -49,7 +49,7 @@ describe('All tests', function () {
     assert.equal(translitbg('САНЯ'), 'SANYA');
   });
 
-  it('test специални случаи', function () {
+  it('test специални съчетания', function () {
     assert.equal(translitbg('ЖЕЗЪЛ'), 'ZHEZAL');
     assert.equal(translitbg('жЕЗЪЛ'), 'zhEZAL');
     assert.equal(translitbg('жезъл'), 'zhezal');
@@ -68,6 +68,12 @@ describe('All tests', function () {
     assert.equal(translitbg('юНГА'), 'yuNGA');
     assert.equal(translitbg('ЯБЪЛКИ'), 'YABALKI');
     assert.equal(translitbg('яБЪЛКИ'), 'yaBALKI');
+    assert.equal(translitbg(
+      'Всички ЖЕзъл, ЦаревеЦ, ЧОвек, шиваЧ, Щастие, юнга, Ябълки, месИЯ, ловеЧ'),
+      'Vsichki ZHEzal, TsareveTS, CHOvek, shivaCH, Shtastie, yunga, Yabalki, mesIA, loveCH');
+    assert.equal(translitbg(
+      'месиЯта борЧвор маЦка маЦКите злоЩастието боЖе боЖЕ крЮгер кРЮгер крЮГер'),
+      'mesiAta borCHvor maTSka maTSKite zloSHTastieto boZHe boZHE krYUger kRYUger krYUGer');
   });
 
   it('test места и адреси', function () {

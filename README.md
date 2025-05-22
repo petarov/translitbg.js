@@ -12,6 +12,8 @@ Transliterates Bulgarian to Latin characters
 
 Транслитерация на българските букви с латински, наречена още латинска транслитерация или латинизация/романизация на българския език.
 
+See also [translitbg](https://github.com/petarov/translitbg) Go package.
+
 # Install
 
     npm install translitbg

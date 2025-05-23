@@ -8,9 +8,9 @@ translitbg
 [npm-url]: https://www.npmjs.com/package/translitbg
 [npm-image]: https://img.shields.io/npm/v/translitbg.svg
 
-Transliterate Bulgarian to Latin characters.
+Transliterate Bulgarian to Latin characters. [Demo](http://petarov.github.io/translitbg.js/)
 
-Транслитерация на българските букви с латински, наречена още латинска транслитерация или латинизация/романизация на българския език.
+Транслитерация на българските букви с латински, наречена още латинска транслитерация или латинизация/романизация на българския език. Вижте [демо](http://petarov.github.io/translitbg.js/) страницата.
 
 See also the [translitbg](https://github.com/petarov/translitbg) package for Go.
 

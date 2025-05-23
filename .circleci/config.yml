@@ -11,12 +11,12 @@ jobs:
 
       - restore_cache:
           keys:
-            - v1-repo-{{ checksum "yarn.lock" }}
+            - v1-node-{{ .Environment.CIRCLE_NODE_VERSION }}-{{ checksum "yarn.lock" }}
 
       - run: yarn install
 
       - save_cache:
-          key: v1-repo-{{ checksum "yarn.lock" }}
+          key: v1-node-{{ .Environment.CIRCLE_NODE_VERSION }}-{{ checksum "yarn.lock" }}
           paths:
             - "node_modules"
 
@@ -39,3 +39,11 @@ workflows:
     build-and-test:
       jobs:
         - build-and-test
+        filters:
+          paths:
+                ignore:
+                  - README.md
+                  - LICENSE
+                  - .editorconfig
+                  - workflows/**
+                  - perf/**

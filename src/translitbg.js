@@ -123,7 +123,7 @@
           var token = mode.t[ch + ch2];
           if (token) {
             var ch3 = chars[i + 2];
-            if (!ch3 || !/^\w+$/.test(ch3)) {
+            if (!ch3 || !/^\w+$/.test(ch3) && !mode.c[ch3]) {
               result.push(token);
               i++;
               ch_1 = ch3;

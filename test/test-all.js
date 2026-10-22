@@ -63,7 +63,7 @@ describe('All tests', function () {
       'Vsichki ZHEzal, TsareveTS, CHOvek, shivaCH, Shtastie, yunga, Yabalki, mesIA, loveCH');
     assert.equal(translitbg(
       'месиЯта борЧвор маЦка маЦКите злоЩастието боЖе боЖЕ крЮгер кРЮгер крЮГер'),
-      'mesiAta borCHvor maTSka maTSKite zloSHTastieto boZHe boZHE krYUger kRYUger krYUGer');
+      'mesiYAta borCHvor maTSka maTSKite zloSHTastieto boZHe boZHE krYUger kRYUger krYUGer');
   });
 
   it('test места и адреси', function () {
@@ -223,7 +223,7 @@ describe('All tests', function () {
   it('test 50+ човешки имена', function () {
     assert.equal(translitbg('Самуил'), 'Samuil');
     assert.equal(translitbg('Синтия'), 'Sintia');
-    assert.equal(translitbg('Марияна ИваноВа'), 'Mariana IvanoVa');
+    assert.equal(translitbg('Марияна ИваноВа'), 'Mariyana IvanoVa');
     assert.equal(translitbg('Явор'), 'Yavor');
     assert.equal(translitbg('Саня'), 'Sanya');
     assert.equal(translitbg('СанЯ'), 'SanYA');
@@ -279,5 +279,31 @@ describe('All tests', function () {
     assert.equal(translitbg('Яна'), 'Yana');
     assert.equal(translitbg('Пламен'), 'Plamen');
     assert.equal(translitbg('Милена'), 'Milena');
+  });
+
+  it('test "ия" в средата на думата', function () {
+    // "ия" се предава с "ia" само в края на думата
+    assert.equal(translitbg('сияние'), 'siyanie');
+    assert.equal(translitbg('Сияние'), 'Siyanie');
+    assert.equal(translitbg('СИЯНИЕ'), 'SIYANIE');
+    assert.equal(translitbg('сиянието'), 'siyanieto');
+    assert.equal(translitbg('ИЯН'), 'IYAN');
+    assert.equal(translitbg('Иян'), 'Iyan');
+    assert.equal(translitbg('Мариян'), 'Mariyan');
+    assert.equal(translitbg('Илиян'), 'Iliyan');
+    assert.equal(translitbg('приятел'), 'priyatel');
+    assert.equal(translitbg('Приятели'), 'Priyateli');
+    assert.equal(translitbg('приятно'), 'priyatno');
+    assert.equal(translitbg('пиян'), 'piyan');
+    assert.equal(translitbg('пияница'), 'piyanitsa');
+    assert.equal(translitbg('сиЯние'), 'siYAnie');
+    assert.equal(translitbg('сИяние'), 'sIyanie');
+
+    // в края на думата остава "ia"
+    assert.equal(translitbg('Ия'), 'Ia');
+    assert.equal(translitbg('история,'), 'istoria,');
+    assert.equal(translitbg('Мария-Антоанета'), 'Maria-Antoaneta');
+    assert.equal(translitbg('Мария и Илиян са приятели от Илия.'),
+      'Maria i Iliyan sa priyateli ot Ilia.');
   });
 });

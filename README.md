@@ -1,7 +1,7 @@
 translitbg
 =================
 
-[![CircleCI][cci-image]][cci-url] [![npm version][npm-image]][npm-url]
+[![Build and test](https://github.com/petarov/translitbg.js/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/petarov/translitbg.js/actions/workflows/build-and-test.yml) [![npm version][npm-image]][npm-url]
 
 [cci-url]: https://circleci.com/gh/petarov/translitbg.js
 [cci-image]: https://circleci.com/gh/petarov/translitbg.js.svg?style=svg

@@ -48,6 +48,6 @@ function jestit() {
 }
 
 exports.lint = lint;
-exports.test = series(lint, test);
-exports.build = series(lint, test, jestit, uglify, dist);
+exports.test = series(lint, test, jestit);
+exports.build = series(exports.test, uglify, dist);
 exports.default = exports.build

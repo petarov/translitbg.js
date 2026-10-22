@@ -1,0 +1,45 @@
+name: Build and test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Test
+        run: yarn test
+
+      - name: Build
+        run: yarn build
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: test-results
+          if-no-files-found: ignore
+
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: build
